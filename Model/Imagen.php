@@ -1,14 +1,28 @@
 <?php
+
 namespace Model;
 
 use JsonSerializable;
 
-class Imagen{
+class Imagen
+{
 
+    private $idMascota;
     private $peso;
     private $formato;
     private $extension;
     private $url;
+
+    public function getIdMascota()
+    {
+        return $this->idMascota;
+    }
+    public function setIdMascota($idMascota): self
+    {
+        $this->idMascota = $idMascota;
+        return $this;
+    }
+
 
     public function getPeso()
     {
@@ -37,7 +51,7 @@ class Imagen{
         return $this->extension;
     }
 
-       public function setExtension($extension): self
+    public function setExtension($extension): self
     {
         $this->extension = $extension;
         return $this;
@@ -57,17 +71,11 @@ class Imagen{
 
     public function toArray()
     {
-      $me["peso"] = $this->peso;
-      $me["formato"] = $this->formato;
-      $me["extension"] = $this->extension;
-      $me["url"] = $this->url;
-      return $me;
+        $me["idMascota"] = $this->idMascota;
+        $me["peso"] = $this->peso;
+        $me["formato"] = $this->formato;
+        $me["extension"] = $this->extension;
+        $me["url"] = $this->url;
+        return $me;
     }
-
-
-
-
-
-
-
 }

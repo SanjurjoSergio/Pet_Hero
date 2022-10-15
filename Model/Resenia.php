@@ -1,14 +1,29 @@
 <?php
+
 namespace Model;
 
 use JsonSerializable;
 
-class Resenia{
+class Resenia
+{
 
+
+    private $idReserva;
     private $id;
     private $puntaje;
     private $fecha;
     private $observaciones;
+
+
+    public function getIdReserva()
+    {
+        return $this->idReserva;
+    }
+    public function setIdReserva($idReserva): self
+    {
+        $this->idReserva = $idReserva;
+        return $this;
+    }
 
     public function getId()
     {
@@ -32,7 +47,7 @@ class Resenia{
         return $this;
     }
 
-      public function getFecha()
+    public function getFecha()
     {
         return $this->fecha;
     }
@@ -56,12 +71,11 @@ class Resenia{
 
     public function toArray()
     {
-      $me["id"] = $this->id;
-      $me["puntaje"] = $this->puntaje;
-      $me["fecha"] = $this->fecha;
-      $me["observaciones"] = $this->observaciones;
-      return $me;
+        $me["idReserva"] = $this->idReserva;
+        $me["id"] = $this->id;
+        $me["puntaje"] = $this->puntaje;
+        $me["fecha"] = $this->fecha;
+        $me["observaciones"] = $this->observaciones;
+        return $me;
     }
-
-
 }

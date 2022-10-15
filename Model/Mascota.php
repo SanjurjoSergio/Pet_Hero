@@ -1,10 +1,13 @@
 <?php
+
 namespace Model;
 
 use JsonSerializable;
 
-class Mascota{
+class Mascota
+{
 
+    private $dniDuenio;
     private $id;
     private $nombre;
     private $raza;
@@ -12,6 +15,19 @@ class Mascota{
     private $observaciones;
     private $imagen;
     private $video;
+
+
+
+    public function getDniDuenio()
+    {
+        return $this->dniDuenio;
+    }
+    public function setDniDuenio($dniDuenio): self
+    {
+        $this->dniDuenio = $dniDuenio;
+        return $this;
+    }
+
 
     public function getId()
     {
@@ -84,7 +100,7 @@ class Mascota{
         return $this->video;
     }
 
-      public function setVideo($video): self
+    public function setVideo($video): self
     {
         $this->video = $video;
         return $this;
@@ -92,21 +108,16 @@ class Mascota{
 
     public function toArray()
     {
-      $me["id"] = $this->id;
-      $me["nombre"] = $this->nombre;
-      $me["raza"] = $this->raza;
-      $me["tamanio"] = $this->tamanio;
-      $me["observaciones"] = $this->observaciones;
-      $me["imagen"] = $this->imagen;
-      $me["video"] = $this->video;
-      return $me;
+        $me["dniDuenio"] = $this->dniDuenio;
+        $me["id"] = $this->id;
+        $me["nombre"] = $this->nombre;
+        $me["raza"] = $this->raza;
+        $me["tamanio"] = $this->tamanio;
+        $me["observaciones"] = $this->observaciones;
+        $me["imagen"] = $this->imagen;
+        $me["video"] = $this->video;
+        return $me;
     }
 
 
-
-
-
-
 }
-
-

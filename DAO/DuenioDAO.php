@@ -29,6 +29,39 @@
         return null;
       }
 
+
+      public function Add(Duenio $duenio)
+      {
+          $this->LoadData(); 
+          
+          array_push($this->list, $duenio);
+
+          $this->SaveData();  
+      }
+
+      private function SaveData()
+      {
+          $arrayToEncode = array();
+
+          foreach($this->list as $duenio)
+          {
+            $valuesArray["usuario"] = $duenio->getUsuario();
+            $valuesArray["contrasenia"] = $duenio->getContrasenia();
+
+            $valuesArray["nombre"] = $duenio->getNombre();
+            $valuesArray["dni"] = $duenio->getDni();
+            $valuesArray["direccion"] = $duenio->getDireccion();
+            $valuesArray["telefono"] = $duenio->getTelefono();
+
+              array_push($arrayToEncode, $valuesArray);
+          }
+
+          $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
+          
+          file_put_contents($this->fileName, $jsonContent);
+      }
+
+
       private function LoadData() 
       {
         $this->list = array();

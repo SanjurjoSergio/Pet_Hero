@@ -29,6 +29,47 @@
         return null;
       }
 
+      
+      public function getByIdReserva($idReserva) 
+      {
+        $this->loadData();
+        foreach($this->list as $item) 
+        {
+          if($item->getIdReserva() == $idReserva)
+            return $item;
+        }
+        return null;
+      }
+      
+      public function Add(Resenia $resenia)
+      {
+          $this->LoadData(); 
+          
+          array_push($this->list, $resenia);
+
+          $this->SaveData();  
+      }
+
+      private function SaveData()
+      {
+          $arrayToEncode = array();
+
+          foreach($this->list as $resenia)
+          {
+            $valuesArray["idReserva"] = $resenia->getIdReserva();
+            $valuesArray["id"] = $resenia->getId();
+            $valuesArray["puntaje"] = $resenia->getPuntaje();
+            $valuesArray["fecha"] = $resenia->getFecha();
+            $valuesArray["observaciones"] = $resenia->getObservaciones();
+
+              array_push($arrayToEncode, $valuesArray);
+          }
+
+          $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
+          
+          file_put_contents($this->fileName, $jsonContent);
+      }
+
       private function LoadData() 
       {
         $this->list = array();
@@ -42,6 +83,7 @@
           {
             $resenia = new Resenia();
             
+            $resenia->setIdReserva($item["idReserva"]);
             $resenia->setId($item["id"]);
             $resenia->setPuntaje($item["puntaje"]);
             $resenia->setFecha($item["fecha"]);

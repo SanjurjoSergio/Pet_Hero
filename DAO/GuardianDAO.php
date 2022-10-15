@@ -28,6 +28,40 @@
         }
         return null;
       }
+      
+      public function Add(Guardian $guardian)
+      {
+          $this->LoadData(); 
+          
+          array_push($this->list, $guardian);
+
+          $this->SaveData();  
+      }
+
+      private function SaveData()
+      {
+          $arrayToEncode = array();
+
+          foreach($this->list as $guardian)
+          {
+            $valuesArray["usuario"] = $guardian->getUsuario();
+            $valuesArray["contrasenia"] = $guardian->getContrasenia();
+
+            $valuesArray["nombre"] = $guardian->getNombre();
+            $valuesArray["direccion"] = $guardian->getDireccion();
+            $valuesArray["cuil"] = $guardian->getCuil();
+            $valuesArray["disponibilidad"] = $guardian->getDisponibilidad();
+            $valuesArray["tamanioMascota"] = $guardian->getTamanioMascota();
+            $valuesArray["precio"] = $guardian->getPrecio();
+
+              array_push($arrayToEncode, $valuesArray);
+          }
+
+          $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
+          
+          file_put_contents($this->fileName, $jsonContent);
+      }
+
 
       private function LoadData() 
       {
@@ -49,6 +83,7 @@
             $guardian->setDireccion($item["direccion"]);
             $guardian->setCuil($item["cuil"]);
             $guardian->setDisponibilidad($item["disponibilidad"]);
+            $guardian->setTamanioMascota($item["tamanioMascota"]);
             $guardian->setPrecio($item["precio"]);
            
             array_push($this->list, $guardian);

@@ -18,7 +18,11 @@
   Router::Route(new Request());
   require_once VIEWS_PATH . 'footer.php';
 
-
+//comentario normal
+//**Comentario Brillo
+//! Comentario Rojo
+//? Comentario Azul
+//TODO: comentario naranja
 
 
   /*

@@ -1,14 +1,29 @@
 <?php
+
 namespace Model;
 
 use JsonSerializable;
 
-class Pago{
+class Pago
+{
 
+
+    private $idReserva;
     private $id;
     private $monto;
-    private $forma_de_pago;
+    private $formaDePago;
     private $fecha;
+
+
+    public function getIdReserva()
+    {
+        return $this->idReserva;
+    }
+    public function setIdReserva($idReserva): self
+    {
+        $this->idReserva = $idReserva;
+        return $this;
+    }
 
     public function getId()
     {
@@ -26,7 +41,7 @@ class Pago{
         return $this->monto;
     }
 
-    
+
     public function setMonto($monto): self
     {
         $this->monto = $monto;
@@ -35,13 +50,13 @@ class Pago{
 
     public function getFormaDePago()
     {
-        return $this->forma_de_pago;
+        return $this->formaDePago;
     }
 
-   
-    public function setFormaDePago($forma_de_pago): self
+
+    public function setFormaDePago($formaDePago): self
     {
-        $this->forma_de_pago = $forma_de_pago;
+        $this->forma_de_pago = $formaDePago;
         return $this;
     }
 
@@ -58,11 +73,11 @@ class Pago{
 
     public function toArray()
     {
-      $me["id"] = $this->id;
-      $me["monto"] = $this->monto;
-      $me["forma_de_pago"] = $this->forma_de_pago;
-      $me["fecha"] = $this->fecha;
-      return $me;
+        $me["idReserva"] = $this->idReserva;
+        $me["id"] = $this->id;
+        $me["monto"] = $this->monto;
+        $me["formaDePago"] = $this->forma_de_pago;
+        $me["fecha"] = $this->fecha;
+        return $me;
     }
-
 }

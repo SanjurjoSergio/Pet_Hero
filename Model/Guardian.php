@@ -1,15 +1,20 @@
 <?php
+
 namespace Model;
 
 use Model\Usuario as Usuario;
+
+require_once("Usuario.php");       //! ver el autoloar despues
 use JsonSerializable;
 
-class Guardian extends Usuario{
+class Guardian extends Usuario
+{
 
     private $nombre;
     private $direccion;
     private $cuil;
     private $disponibilidad;
+    private $tamanioMascota;        //TODO string:   chico/mediano/grande
     private $precio;
 
     public function getNombre()
@@ -56,6 +61,16 @@ class Guardian extends Usuario{
         return $this;
     }
 
+    public function getTamanioMascota()
+    {
+        return $this->tamanioMascota;
+    }
+    public function setTamanioMascota($tamanioMascota): self
+    {
+        $this->tamanioMascota = $tamanioMascota;
+        return $this;
+    }
+
     public function getPrecio()
     {
         return $this->precio;
@@ -70,16 +85,15 @@ class Guardian extends Usuario{
 
     public function toArray()
     {
-      //$me["usuario"] = $this->usuario;
-      //$me["contrasenia"] = $this->contrasenia;
-      $me = parent::toArray();
-      $me["nombre"] = $this->nombre;
-      $me["direccion"] = $this->direccion;
-      $me["cuil"] = $this->cuil;
-      $me["disponibilidad"] = $this->disponibilidad;
-      $me["precio"] = $this->precio;  
-      return $me;
+        //$me["usuario"] = $this->usuario;
+        //$me["contrasenia"] = $this->contrasenia;
+        $me = parent::toArray();
+        $me["nombre"] = $this->nombre;
+        $me["direccion"] = $this->direccion;
+        $me["cuil"] = $this->cuil;
+        $me["disponibilidad"] = $this->disponibilidad;
+        $me["tamanioMascota"] = $this->tamanioMascota;
+        $me["precio"] = $this->precio;
+        return $me;
     }
-
-
 }

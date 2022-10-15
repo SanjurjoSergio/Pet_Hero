@@ -1,15 +1,40 @@
 <?php
+
 namespace Model;
 
 use JsonSerializable;
 
-class Reserva{
+class Reserva
+{
 
+    private $dniDuenio;
+    private $cuilGuardian;
     private $id;
-    private $fecha_inicio;
-    private $fecha_final;
+    private $fechaInicio;
+    private $fechaFinal;
     private $horario;
     private $estado;
+
+    public function getDniDuenio()
+    {
+        return $this->dniDuenio;
+    }
+    public function setDniDuenio($dniDuenio): self
+    {
+        $this->dniDuenio = $dniDuenio;
+        return $this;
+    }
+
+    public function getCuilGuardian()
+    {
+        return $this->cuilGuardian;
+    }
+    public function setCuilGuardian($cuilGuardian): self
+    {
+        $this->cuilGuardian = $cuilGuardian;
+        return $this;
+    }
+
 
     public function getId()
     {
@@ -24,24 +49,24 @@ class Reserva{
 
     public function getFechaInicio()
     {
-        return $this->fecha_inicio;
+        return $this->fechaInicio;
     }
 
-    public function setFechaInicio($fecha_inicio): self
+    public function setFechaInicio($fechaInicio): self
     {
-        $this->fecha_inicio = $fecha_inicio;
+        $this->fechaInicio = $fechaInicio;
 
         return $this;
     }
 
     public function getFechaFinal()
     {
-        return $this->fecha_final;
+        return $this->fechaFinal;
     }
 
-    public function setFechaFinal($fecha_final): self
+    public function setFechaFinal($fechaFinal): self
     {
-        $this->fecha_final = $fecha_final;
+        $this->fechaFinal = $fechaFinal;
         return $this;
     }
 
@@ -56,7 +81,7 @@ class Reserva{
         return $this;
     }
 
-      public function getEstado()
+    public function getEstado()
     {
         return $this->estado;
     }
@@ -69,12 +94,13 @@ class Reserva{
 
     public function toArray()
     {
-      $me["id"] = $this->id;
-      $me["fecha_inicio"] = $this->fecha_inicio;
-      $me["fecha_final"] = $this->fecha_final;
-      $me["horario"] = $this->horario;
-      $me["estado"] = $this->estado;
-      return $me;
+        $me["dniDuenio"] = $this->dniDuenio;
+        $me["cuilGuardian"] = $this->cuilGuardian;
+        $me["id"] = $this->id;
+        $me["fechaInicio"] = $this->fechaInicio;
+        $me["fechaFinal"] = $this->fechaFinal;
+        $me["horario"] = $this->horario;
+        $me["estado"] = $this->estado;
+        return $me;
     }
-
 }

@@ -18,15 +18,44 @@
         return $this->list;
       }
 
-      public function getByUrl($url) 
+      public function getByIdMascota($idMascota) 
       {
         $this->loadData();
         foreach($this->list as $item) 
         {
-          if($item->getUrl() == $url)
+          if($item->getIdMascota() == $idMascota)
             return $item;
         }
         return null;
+      }
+      
+      public function Add(Video $video)
+      {
+          $this->LoadData(); 
+          
+          array_push($this->list, $video);
+
+          $this->SaveData();  
+      }
+
+      private function SaveData()
+      {
+          $arrayToEncode = array();
+
+          foreach($this->list as $video)
+          {
+            $valuesArray["idMascota"] = $video->getIdMascota();
+            $valuesArray["peso"] = $video->getPeso();
+            $valuesArray["extension"] = $video->getExtension();
+            $valuesArray["duracion"] = $video->getDuracion();
+            $valuesArray["url"] = $video->getHorario();
+           
+              array_push($arrayToEncode, $valuesArray);
+          }
+
+          $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
+          
+          file_put_contents($this->fileName, $jsonContent);
       }
 
       private function LoadData() 
@@ -42,6 +71,7 @@
           {
             $video = new Video();
             
+            $video->setIdMascota($item["idMascota"]);
             $video->setPeso($item["peso"]);
             $video->setExtension($item["extension"]);
             $video->setDuracion($item["duracion"]);
