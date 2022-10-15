@@ -29,6 +29,17 @@
         return null;
       }
 
+      public function getByUsuario($usuario)
+      {
+        $this->LoadData();
+        foreach($this->list as $item)
+        {
+          if($item->getUsuario() == $usuario)
+            return $item;
+        }
+        return null;
+      }
+
 
       public function Add(Duenio $duenio)
       {
@@ -47,6 +58,7 @@
           {
             $valuesArray["usuario"] = $duenio->getUsuario();
             $valuesArray["contrasenia"] = $duenio->getContrasenia();
+            $valuesArray["tipo"] = $duenio->getTipo();
 
             $valuesArray["nombre"] = $duenio->getNombre();
             $valuesArray["dni"] = $duenio->getDni();
@@ -77,6 +89,7 @@
                      
             $duenio->setUsuario($item["usuario"]);
             $duenio->setContrasenia($item["contrasenia"]);
+            $duenio->setTipo($item["tipo"]);
 
             $duenio->setNombre($item["nombre"]);
             $duenio->setDni($item["dni"]);

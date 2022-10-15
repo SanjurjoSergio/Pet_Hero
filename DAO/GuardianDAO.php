@@ -28,6 +28,16 @@
         }
         return null;
       }
+
+      public function getByUsuario($usuario)
+      {
+        $this->LoadData();
+        foreach ($this->list as $item) {
+          if ($item->getUsuario() == $usuario)
+            return $item;
+        }
+        return null;
+      }
       
       public function Add(Guardian $guardian)
       {
@@ -46,6 +56,7 @@
           {
             $valuesArray["usuario"] = $guardian->getUsuario();
             $valuesArray["contrasenia"] = $guardian->getContrasenia();
+            $valuesArray["tipo"] = $guardian->getTipo();
 
             $valuesArray["nombre"] = $guardian->getNombre();
             $valuesArray["direccion"] = $guardian->getDireccion();
@@ -78,6 +89,7 @@
 
             $guardian->setUsuario($item["usuario"]);
             $guardian->setContrasenia($item["contrasenia"]);
+            $guardian->setTipo($item["tipo"]);
 
             $guardian->setNombre($item["nombre"]);
             $guardian->setDireccion($item["direccion"]);

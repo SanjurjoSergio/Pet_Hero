@@ -29,15 +29,17 @@
         return null;
       }
 
-      public function getByDniDuenio($dniDuenio) 
+      public function getAllByDuenio($dniDuenio) //! chequear esta funcion
       {
         $this->loadData();
-        foreach($this->list as $item) 
-        {
-          if($item->getDniDuenio() == $dniDuenio)
-            return $item;
+
+        $listByDniDuenio = array();
+        foreach ($this->list as $item) {
+          if ($item->getDniDuenio() == $dniDuenio)
+            array_push($listByDniDuenio, $item);
         }
-        return null;
+
+        return $listByDniDuenio;
       }
 
       public function Add(Mascota $mascota)

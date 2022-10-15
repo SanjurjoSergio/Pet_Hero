@@ -86,6 +86,28 @@ class Reserva
         return $this->estado;
     }
 
+    public function getEstadoDescripcion()
+    {
+        $text = '';
+        switch ($this->estado) {
+            case "S":
+                $text = 'Solicitada';
+                break;
+            case "A":
+                $text = 'Aceptada';
+                break;
+            case "R":
+                $text = 'Rechazada';
+                break;
+            case "P":
+                $text = 'En progreso';
+            case "F":
+                $text = 'Finalizada';
+                break;
+        }
+        return $text;
+    }
+
     public function setEstado($estado): self
     {
         $this->estado = $estado;

@@ -6,10 +6,12 @@
     {
       private $list = array();
       private $filename;
+      private $maxId;
 
       public function __construct()
       {
         $this->filename = dirname(__DIR__)."/Data/pagos.json";
+        $this->maxId = 0;
       }
 
       public function GetAll()
@@ -21,6 +23,7 @@
       public function getById($id) 
       {
         $this->loadData();
+
         foreach($this->list as $item) 
         {
           if($item->getId() == $id)
@@ -29,53 +32,43 @@
         return null;
       }
 
-
-      public function getByIdReserva($idReserva) 
+      public function getAllByIdReserva($idReserva) 
       {
         $this->loadData();
-        foreach($this->list as $item) 
-        {
-          if($item->getIdReserva() == $idReserva)
-            return $item;
-        }
-        return null;
-      }
 
+        $listByidReserva = array();
+        foreach ($this->list as $item) {
+          if ($item->getIdReserva() == $idReserva)
+            array_push($listByidReserva, $item);
+        }
+        return $listByidReserva;
+      }
 
       public function Add(Pago $pago)
       {
-          $this->LoadData(); 
+          $this->LoadData();
+          $this->maxId++;
+          $pago->setId($this->maxId);
           
           array_push($this->list, $pago);
 
           $this->SaveData();  
       }
 
-
       private function SaveData()
       {
-          $arrayToEncode = array();
-
-          foreach($this->list as $pago)
-          {
-            $valuesArray["idReserva"] = $pago->getIdReserva();
-            $valuesArray["id"] = $pago->getId();
-            $valuesArray["fecha"] = $pago->getFecha();
-            $valuesArray["monto"] = $pago->getMonto();
-            $valuesArray["formaDePago"] = $pago->getFormaDePago();
-
-              array_push($arrayToEncode, $valuesArray);
-          }
-
-          $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-          
-          file_put_contents($this->fileName, $jsonContent);
+        $toEncode = array();
+        foreach ($this->list as $pago) {
+          array_push($toEncode, $pago->toArray());
+        }
+        $json = json_encode($toEncode, JSON_PRETTY_PRINT);
+        file_put_contents($this->filename, $json);
       }
-
 
       private function LoadData() 
       {
         $this->list = array();
+        $this->maxId = 0;
 
         if(file_exists($this->filename)) 
         {
@@ -93,6 +86,9 @@
             $pago->setFormaDePago($item["formaDePago"]);
            
             array_push($this->list, $pago);
+            if ($pago->getId() > $this->maxId) {
+              $this->maxId = $pago->getId();
+            }
           }
         }
       }

@@ -6,10 +6,12 @@
     {
       private $list = array();
       private $filename;
+      private $maxId;
 
       public function __construct()
       {
         $this->filename = dirname(__DIR__)."/Data/reservas.json";
+        $this->maxId = 0;
       }
 
       public function GetAll()
@@ -29,64 +31,81 @@
         return null;
       }
 
-      public function getByDniDuenio($dniDuenio)      
+      public function getAllByDniDuenio($dniDuenio)      
       {
         $this->loadData();
+
+        $listByDniDuenio = array();
         foreach($this->list as $item) 
         {
           if($item->getDniDuenio() == $dniDuenio)
-            return $item;
+            array_push($listByName, $item);
         }
-        return null;
+        return $listByDniDuenio;
       }
 
-      public function getByCuilGuardian($cuilGuardian)      
+      public function getAllByCuilGuardian($cuilGuardian)      
       {
         $this->loadData();
+
+        $listByCuilGuardian = array();
         foreach($this->list as $item) 
         {
           if($item->getCuilGuardian() == $cuilGuardian)
-            return $item;
+            array_push($listByCuilGuardian, $item);
         }
-        return null;
+        return $listByCuilGuardian;
       }
-
      
       public function Add(Reserva $reserva)
       {
-          $this->LoadData(); 
-          
-          array_push($this->list, $reserva);
+        $this->LoadData();
+        $this->maxId++;
+        $reserva->setId($this->maxId);
+        array_push($this->list, $reserva);
+        $this->SaveData(); 
+      }
 
-          $this->SaveData();  
+      public function UpdateEstado($id, $estado)
+      {
+        $this->loadData();
+        foreach ($this->list as $item) {
+          if ($item->getId() == $id) {
+            $item->setEstado($estado);
+            $this->SaveData();
+            return true;
+          }
+        }
+        return false;
+      }
+
+      public function Delete($id)
+      {
+        $this->loadData();
+        foreach ($this->list as $index => $item) {
+          if ($item->getId() == $id) {
+            unset($this->list[$index]);
+            $this->SaveData();
+            return true;
+          }
+        }
+        return false;
       }
 
       private function SaveData()
       {
-          $arrayToEncode = array();
-
-          foreach($this->list as $reserva)
-          {
-            $valuesArray["dniDuenio"] = $reserva->getDniDuenio();
-            $valuesArray["cuilGuardian"] = $reserva->getCuilGuardian();
-            $valuesArray["id"] = $reserva->getId();
-            $valuesArray["fechaInicio"] = $reserva->getFechaInicio();
-            $valuesArray["fechaFinal"] = $reserva->getFechaFinal();
-            $valuesArray["horario"] = $reserva->getHorario();
-            $valuesArray["estado"] = $reserva->getEstado();
-
-              array_push($arrayToEncode, $valuesArray);
-          }
-
-          $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-          
-          file_put_contents($this->fileName, $jsonContent);
+        $toEncode = array();
+        foreach ($this->list as $reserva) {
+          array_push($toEncode, $reserva->toArray());
+        }
+        $json = json_encode($toEncode, JSON_PRETTY_PRINT);
+        file_put_contents($this->filename, $json);
       }
-
 
       private function LoadData() 
       {
         $this->list = array();
+        $this->maxId = 0;
 
         if(file_exists($this->filename)) 
         {
@@ -106,6 +125,9 @@
             $reserva->setEstado($item["estado"]);
             
             array_push($this->list, $reserva);
+            if ($reserva->getId() > $this->maxId) {
+              $this->maxId = $reserva->getId();
+            }
           }
         }
       }

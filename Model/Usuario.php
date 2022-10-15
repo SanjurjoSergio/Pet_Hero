@@ -7,6 +7,7 @@ abstract class Usuario {
 
     private $usuario;
     private $contrasenia;
+    private $tipo;
 
     public function getUsuario()
     {
@@ -32,13 +33,28 @@ abstract class Usuario {
         return $this;
     }
 
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    public function setTipo($tipo): self
+    {
+        $this->tipo = $tipo;
+
+        return $this;
+    }
+
     public function toArray()
     {
       $me["usuario"] = $this->usuario;
       $me["contrasenia"] = $this->contrasenia;
+      $me["tipo"] = $this->tipo;
       return $me;
     }
 
     
 
+
+    
 }

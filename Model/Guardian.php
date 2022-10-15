@@ -65,6 +65,7 @@ class Guardian extends Usuario
     {
         return $this->tamanioMascota;
     }
+    
     public function setTamanioMascota($tamanioMascota): self
     {
         $this->tamanioMascota = $tamanioMascota;

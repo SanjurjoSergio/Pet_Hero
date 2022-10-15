@@ -6,14 +6,37 @@ use JsonSerializable;
 
 class Resenia
 {
-
-
+    private $dniDuenio;
+    private $cuilGuardian;
     private $idReserva;
     private $id;
     private $puntaje;
     private $fecha;
     private $observaciones;
 
+    public function getDniDuenio()
+    {
+        return $this->dniDuenio;
+    }
+
+    public function setDniDuenio($dniDuenio): self
+    {
+        $this->dniDuenio = $dniDuenio;
+
+        return $this;
+    }
+
+    public function getCuilGuardian()
+    {
+        return $this->cuilGuardian;
+    }
+
+    public function setCuilGuardian($cuilGuardian): self
+    {
+        $this->cuilGuardian = $cuilGuardian;
+
+        return $this;
+    }
 
     public function getIdReserva()
     {
@@ -71,6 +94,8 @@ class Resenia
 
     public function toArray()
     {
+        $me["dniDuenio"] = $this->dniDuenio;
+        $me["cuilGuardian"] = $this->cuilGuardian;
         $me["idReserva"] = $this->idReserva;
         $me["id"] = $this->id;
         $me["puntaje"] = $this->puntaje;
