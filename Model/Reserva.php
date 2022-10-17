@@ -13,7 +13,9 @@ class Reserva
     private $fechaInicio;
     private $fechaFinal;
     private $horario;
-    private $estado;
+    private $estado;                //TODO   'Solicitada' 'Aceptada' 'Rechazada' 'En progreso'(P); 'Finalizada'
+        
+
 
     public function getDniDuenio()
     {

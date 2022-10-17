@@ -102,5 +102,23 @@
           }
         }
       }
+      
+      public function UpdateDisponibilidad($cuil, $disponibilidad = '')
+      {
+        $this->loadData();
+        foreach($this->list as $item) 
+        {
+          if($item->getCuil() == $cuil)
+          {
+            $item->setDisponibilidad($disponibilidad);
+            $this->SaveData();
+            return true;
+          }
+        }
+        return false;
+      }
+
+
+
     }
 ?>

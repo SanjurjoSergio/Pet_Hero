@@ -2,7 +2,7 @@
     namespace DAO;
     use Model\Mascota as Mascota;
 
-    class GuardianDAO
+    class MascotaDAO
     {
       private $list = array();
       private $filename;
@@ -42,6 +42,21 @@
         return $listByDniDuenio;
       }
 
+      public function UpdateObservaciones($id, $observaciones)
+      {
+        $this->loadData();
+        foreach ($this->list as $item) {
+          if ($item->getId() == $id) {
+            $item->setObservaciones($observaciones);
+            $this->SaveData();
+            return true;
+          }
+        }
+        return false;
+      }
+
+
+
       public function Add(Mascota $mascota)
       {
           $this->LoadData(); 
@@ -51,6 +66,21 @@
           $this->SaveData();  
       }
 
+      
+      public function Delete($id, $dniDuenio)
+      {
+        $this->loadData();
+        foreach ($this->list as $index => $item) {
+          if ($item->getId() == $id && $item->getDniDuenio() == $dniDuenio) {
+            unset($this->list[$index]);
+            $this->SaveData();
+            return true;
+          }
+        }
+        return false;
+      }
+
+      
       private function SaveData()
       {
           $arrayToEncode = array();

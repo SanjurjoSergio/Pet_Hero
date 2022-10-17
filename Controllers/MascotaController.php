@@ -1,16 +1,18 @@
 <?php
     namespace Controllers;
-  
     use Model\Mascota as Mascota;
-    use DAO\MAscotaDAO as MascotaDAO;
+    use DAO\MascotaDAO as MascotaDAO;
 
     class MascotaController
     {
         public function Add($dniDuenio = '', $id = '', $nombre = '', $raza = '', $tamanio = '', $observaciones = '', $imagen = '', $video = '')
         {
           if(isset($_SESSION['usuario']))
-            if($_SESSION['tipo'] == 'D') {
-              if($dniDuenio != '' || $id != '' || $nombre != '' || $raza != '' || $tamanio != '' || $observaciones != '' || $imagen != '' || $video != '') {
+          {
+            if($_SESSION['tipo'] == 'D') 
+            {
+              if($dniDuenio != '' || $id != '' || $nombre != '' || $raza != '' || $tamanio != '' || $observaciones != '' || $imagen != '' || $video != '') 
+              {
                 $mascota = new Mascota();
 
                 $mascota->setDniDuenio($dniDuenio);
@@ -35,6 +37,7 @@
             else {
               require_once(VIEWS_PATH. 'mascota-list.php');
             }
+          }
           else
             require_once(VIEWS_PATH.'login.php');
         }
@@ -45,7 +48,7 @@
             $mascotaDao = new MascotaDAO();
             $lista = array();
             if($_SESSION['tipo'] == 'D') {
-                $lista = $mascotaDao->getAllByDniDuenio($_SESSION['dni']);
+                $lista = $mascotaDao->getAllByDuenio($_SESSION['dni']);
                 require_once(VIEWS_PATH . 'mascota-list.php');
             }//!ver q poner en el else
           }
@@ -121,11 +124,11 @@
         }
         */
 
-        public function Delete($id) {
+        public function Delete($id, $dniDuenio) {
           if(isset($_SESSION['usuario']))
-            if($_SESSION['tipo'] == 'D') {
+            if($_SESSION['tipo'] == 'D' && $_SESSION['dni'] == $dniDuenio) {
                 $mascotaDao = new MascotaDAO();
-                $mascotaDao->Delete($id);                
+                $mascotaDao->Delete($id, $dniDuenio);                
                 $this->List('El registro fue eliminado');
             }
             else {
@@ -135,4 +138,3 @@
             require_once(VIEWS_PATH.'login.php');
         }
     }
-?>

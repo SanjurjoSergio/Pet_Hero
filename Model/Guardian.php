@@ -13,7 +13,7 @@ class Guardian extends Usuario
     private $nombre;
     private $direccion;
     private $cuil;
-    private $disponibilidad;
+    private $disponibilidad;        //TODO string:   maniana/tarde/noche   //o los dias ver despues
     private $tamanioMascota;        //TODO string:   chico/mediano/grande
     private $precio;
 

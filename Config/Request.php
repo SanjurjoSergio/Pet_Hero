@@ -6,12 +6,13 @@
         private $controller;
         private $method;
         private $parameters = array();
-       /* 
+        
         public function __construct()
         {
             $url = filter_input(INPUT_GET, "url", FILTER_SANITIZE_URL);
 
-            $urlArray = explode("/", $url);
+            $urlArray = explode("/", isset($url) ? $url : "");
+
          
             $urlArray = array_filter($urlArray);
 
@@ -57,7 +58,7 @@
         {
             return $_SERVER["REQUEST_METHOD"];
         }            
-        */
+        
         public function getController() {
             return $this->controller;
         }
