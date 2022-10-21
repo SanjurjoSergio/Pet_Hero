@@ -24,17 +24,18 @@
                 
                 $duenioDao = new DuenioDAO();
                 $duenioDao->Add($duenio);
-                                
+
+                header("location: ../Views/duenio-home.php");      
               }              
               else 
               {
-                require_once(VIEWS_PATH. 'duenio-add.php');
+                require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\duenio-add.php');
               }
             }
             else {
-              require_once(VIEWS_PATH. 'guardian-add.php');
+              require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\guardian-add.php');
             }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
     }

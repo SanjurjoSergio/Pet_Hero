@@ -36,32 +36,31 @@
                 $nuevoUsuario = new Duenio();
                 $nuevoUsuario = $this->duenioDao->getByUsuario($usuario);
                 $_SESSION['dni'] = $nuevoUsuario->getDni();
+                header("location: ../Views/duenio-home.php");             
               }
               else
               {
                 $nuevoUsuario = new Guardian();
                 $nuevoUsuario = $this->guardianDao->getByUsuario($usuario);
                 $_SESSION['cuil'] = $nuevoUsuario->getCuil();
-              }
-              
-              $controller = new ReservaController();
-              $controller->List();
+                header("location: ../Views/guardian-home.php"); 
+              }              
             }
             else 
             {
-              require_once(VIEWS_PATH."login.php");
+              require_once("C:\\xampp\htdocs\Practicos\Pet_Hero\Views\login.php");
             }
           }
           else
           {
-            require_once(VIEWS_PATH."login.php");
+            require_once("C:\\xampp\htdocs\Practicos\Pet_Hero\Controllers\UsuarioController\Add");
           }
         }
 
         public function Logout()
         {
           session_destroy();
-          require_once(VIEWS_PATH."login.php");
+          require_once("C:\\xampp\htdocs\Practicos\Pet_Hero\Views\login.php");
         }
     }
 ?>

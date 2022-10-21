@@ -4,7 +4,7 @@ include_once('nav-bar.php');
 ?>
 
 <div id="breadcrumb" class="hoc clear">
-    <h6 class="heading">Ingreso de Dueños</h6>
+    <h6 class="heading">Registro de Usuario</h6>
 </div>
 </div>
 <div class="wrapper row3">
@@ -12,37 +12,33 @@ include_once('nav-bar.php');
         <!-- main body -->
         <div class="content">
             <div id="comments" style="align-items:center;">
-                <h2>Ingresar Dueño</h2>
-                <form action="..\Duenio/Add" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
+                <h2>Registrar Usuario</h2>
+                <form action="..\Usuario/Add" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
                     <table>
                         <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>DNI</th>
-                                <th>Direccion</th>
-                                <th>Telefono</th>                              
+                                <th>Usuario</th>
+                                <th>contraseña</th>
+                                <th>Tipo</th>
                             </tr>
                         </thead>
                         <tbody align="center">
                             <tr>
                                 <td style="max-width: 120px;">
-                                    <input type="text" name="nombre" size="22" min="0" required>
+                                    <input type="text" name="usuario" size="30" min="0" required>
                                 </td>
                                 <td>
-                                    <input type="text" name="dni" size="22" required>
+                                    <input type="password" name="contrasenia" size="30" required>
                                 </td>
-                                <td>
-                                    <input type="text" name="direccion" size="22" required>
+                                <td>                                    
+                                    <input type="radio" name="tipo" value="D" checked required> Duenio
+                                    <input type="radio" name="tipo" value="G"> Guardian                                    
                                 </td>
-                                <td>
-                                    <input type="text" name="telefono" size="22" required>
-                                </td>
-                                
                             </tr>
                         </tbody>
                     </table>
                     <div>
-                        <input type="submit" class="btn" value="Agregar" style="background-color:#DC8E47;color:white;" />
+                        <input type="submit" class="btn" value="Aceptar" style="background-color:#DC8E47;color:white;" />
                     </div>
                 </form>
             </div>

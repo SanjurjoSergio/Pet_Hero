@@ -28,14 +28,14 @@
               }              
               else 
               {
-                require_once(VIEWS_PATH.'reserva-add.php');
+                require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\reserva-add.php');
               }
             }
             else {
-              require_once(VIEWS_PATH.'reserva-list.php');
+              require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\reserva-list.php');
             }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
 
         public function List($mensaje = '')
@@ -50,10 +50,10 @@
             { 
               $lista = $reservaDao->getAllByCuilGuardian($_SESSION['cuil']);
             }
-            require_once(VIEWS_PATH.'reserva-list.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\reserva-list.php');
           }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
 
         public function Update($id, $estado = '') {
@@ -69,14 +69,14 @@
               {
                 $reservaDao = new ReservaDAO();
                 $reserva = $reservaDao->getById($id);
-                require_once(VIEWS_PATH. 'reserva-update.php');
+                require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\reserva-update.php');
               }
             }
             else {
-              require_once(VIEWS_PATH. 'reserva-list.php');
+              require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\reserva-list.php');
             }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
 
         public function Delete($id) {
@@ -87,10 +87,10 @@
                 $this->List('El registro fue eliminado');
             }
             else {
-              require_once(VIEWS_PATH. 'reserva-list.php');
+              require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\reserva-list.php');
             }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
     }
 ?>

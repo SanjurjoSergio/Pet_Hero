@@ -1,0 +1,13 @@
+[
+    {
+        "usuario": "dos",
+        "contrasenia": "234",
+        "tipo": "G",
+        "nombre": "Dos",
+        "direccion": "11111111",
+        "cuil": "Calle 1",
+        "disponibilidad": "111-111111",
+        "tamanioMascota": "Grande",
+        "precio": "300"
+    }
+]

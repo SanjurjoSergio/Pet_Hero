@@ -9,7 +9,8 @@
 
       public function __construct()
       {
-        $this->filename = dirname(__DIR__)."/Data/usuarios.json";
+        //$this->filename = dirname(__DIR__)."/Data/usuarios.json";  
+        $this->filename = "C:\\xampp\htdocs\Practicos\Pet_Hero\Data\usuarios.json"; 
       }
 
       public function GetAll()

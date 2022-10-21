@@ -31,15 +31,15 @@
               }              
               else 
               {
-                require_once(VIEWS_PATH. 'mascota-add.php');
+                require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\mascota-add.php');
               }
             }
             else {
-              require_once(VIEWS_PATH. 'mascota-list.php');
+              require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\mascota-list.php');
             }
           }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
 
         public function List($mensaje = '')
@@ -49,11 +49,11 @@
             $lista = array();
             if($_SESSION['tipo'] == 'D') {
                 $lista = $mascotaDao->getAllByDuenio($_SESSION['dni']);
-                require_once(VIEWS_PATH . 'mascota-list.php');
+                require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\mascota-list.php');
             }//!ver q poner en el else
           }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
 
         public function UpdateObservaciones($id, $observaciones = '') {
@@ -69,14 +69,14 @@
               {
                 $mascotaDao = new MascotaDAO();
                 $mascota = $mascotaDao->getById($id);
-                require_once(VIEWS_PATH. 'mascota-update.php');
+                require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\mascota-update.php');
               }
             }
             else {
-              require_once(VIEWS_PATH. 'mascota-list.php');
+              require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\mascota-list.php');
             }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
 
         /* //!VER LOS DAO DE VIDEO E IMAGEN Y EN BASE A ESO HACER ESTAS FUNCIONES
@@ -132,9 +132,9 @@
                 $this->List('El registro fue eliminado');
             }
             else {
-              require_once(VIEWS_PATH. 'mascota-list.php');
+              require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\mascota-list.php');
             }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
     }

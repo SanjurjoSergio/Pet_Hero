@@ -1,0 +1,11 @@
+[
+    {
+        "usuario": "uno",
+        "contrasenia": "123",
+        "tipo": "D",
+        "nombre": "Uno",
+        "dni": "11111111",
+        "direccion": "Calle 1",
+        "telefono": "111-111111"
+    }
+]

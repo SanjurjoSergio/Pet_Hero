@@ -9,16 +9,16 @@
         <li class="active"><a class="drop" href="#">Actions</a>
           <ul>
             <?php if($_SESSION['tipo'] == 'D') { ?>
-            <li><a href="<?php echo FRONT_ROOT ?>Mascota/Add">AGREGAR MASCOTA</a></li>
-            <li><a href="<?php echo FRONT_ROOT ?>Mascota/List">LISTADO DE MIS MASCOTAS</a></li>
-            <li><a href="<?php echo FRONT_ROOT ?>Guardian/List">LISTADO DE GUARDIANES</a></li>
+            <li><a href="C:\xampp\htdocs\Practicos\Pet_Hero\Mascota/Add">AGREGAR MASCOTA</a></li>                                   //! ver estos href
+            <li><a href="C:\xampp\htdocs\Practicos\Pet_Hero\Mascota/List">LISTADO DE MIS MASCOTAS</a></li>
+            <li><a href="C:\xampp\htdocs\Practicos\Pet_Hero\Guardian/List">LISTADO DE GUARDIANES</a></li>
             <?php } ?>
             <?php if($_SESSION['tipo'] == 'G') { ?>
-            <li><a href="<?php echo FRONT_ROOT ?>Resenia/List">VER MIS RESEÑAS</a></li>
-            <li><a href="<?php echo FRONT_ROOT ?>Guardian/UpdateDisponibilidad">ACTUALIZAR DISPONIBILIDAD</a></li>
+            <li><a href="C:\xampp\htdocs\Practicos\Pet_Hero\Resenia/List">VER MIS RESEÑAS</a></li>
+            <li><a href="C:\xampp\htdocs\Practicos\Pet_Hero\Guardian/UpdateDisponibilidad">ACTUALIZAR DISPONIBILIDAD</a></li>
             <?php } ?>
-            <li><a href="<?php echo FRONT_ROOT ?>Reserva/List">VER MIS RESERVAS</a></li>
-            <li><a href="<?php echo FRONT_ROOT ?>Auth/Logout">LOGOUT</a></li>
+            <li><a href="C:\xampp\htdocs\Practicos\Pet_Hero\Reserva/List">VER MIS RESERVAS</a></li>
+            <li><a href="C:\xampp\htdocs\Practicos\Pet_Hero\Auth/Logout">LOGOUT</a></li>
           </ul>
         </li>
       </ul>

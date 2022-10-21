@@ -7,11 +7,12 @@
         public function Index()
         {
             if(isset($_SESSION['usuario'])) {
-                $controller = new ReservaController();
+                $controller = new ReservaController();  //! aca van las landing dependiendo del user
                 $controller->List();
             }
-            else
-                require_once(VIEWS_PATH.'login.php');
+            else               
+               require_once(ROOT . "Views/login.php");
+             // header("location:" . "Auth/Login" );
         }
     }
 ?>
