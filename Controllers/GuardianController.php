@@ -30,14 +30,14 @@
               }              
               else 
               {
-                require_once(VIEWS_PATH. 'guardian-add.php');
+                require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\guardian-add.php');
               }
             }
             else {
-              require_once(VIEWS_PATH. 'duenio-add.php');
+              require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\duenio-add.php');
             }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
 
         
@@ -53,14 +53,14 @@
                 {
                   $guardianDao = new GuardianDAO();
                   $guardian = $guardianDao->getByCuil($cuil);
-                  require_once(VIEWS_PATH. 'guardian-update.php');
+                  require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\guardian-update.php');
                 }
               }
               else {
-                require_once(VIEWS_PATH. 'login.php');
+                require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
               }
             else
-              require_once(VIEWS_PATH.'login.php');
+              require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
           }
 
           public function List($mensaje = '')
@@ -70,13 +70,13 @@
               $lista = array();
               if($_SESSION['tipo'] == 'D') {
                   $lista = $guardianDao->getAll();
-                  require_once(VIEWS_PATH . 'guardian-list.php');
+                  require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\guardian-list.php');
               }else{
-                require_once(VIEWS_PATH.'login.php');
+                require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
               }
             }
             else
-              require_once(VIEWS_PATH.'login.php');
+              require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
           }
         
 

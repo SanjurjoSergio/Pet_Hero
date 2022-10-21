@@ -28,14 +28,14 @@
               }              
               else 
               {
-                require_once(VIEWS_PATH. 'resenia-add.php');
+                require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\resenia-add.php');
               }
             }
             else {
-              require_once(VIEWS_PATH. 'resenia-list.php');
+              require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\resenia-list.php');
             }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
 
         public function List($mensaje = '')
@@ -50,10 +50,10 @@
             { 
               $lista = $reseniaDao->getAllByCuilGuardian($_SESSION['cuil']);
             }
-            require_once(VIEWS_PATH. 'resenia-list.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\resenia-list.php');
           }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
 
         public function UpdateObservaciones($id, $observaciones = '') {
@@ -69,14 +69,14 @@
               {
                 $reseniaDao = new ReseniaDAO();
                 $resenia = $reseniaDao->getById($id);
-                require_once(VIEWS_PATH. 'resenia-update.php');
+                require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\resenia-update.php');
               }
             }
             else {
-              require_once(VIEWS_PATH. 'resenia-list.php');
+              require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\resenia-list.php');
             }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
 
         public function UpdatePuntaje($id, $puntaje = '')
@@ -91,13 +91,13 @@
                 } else {
                     $reseniaDao = new ReseniaDAO();
                     $resenia = $reseniaDao->getById($id);
-                    require_once(VIEWS_PATH . 'resenia-update.php');
+                    require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\resenia-update.php');
                 }
             } else {
-                require_once(VIEWS_PATH . 'resenia-list.php');
+                require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\resenia-list.php');
             }
             else
-                require_once(VIEWS_PATH . 'login.php');
+                require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
 
         public function Delete($id) {
@@ -108,10 +108,10 @@
                 $this->List('El registro fue eliminado');
             }
             else {
-              require_once(VIEWS_PATH. 'resenia-list.php');
+              require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\resenia-list.php');
             }
           else
-            require_once(VIEWS_PATH.'login.php');
+            require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
         }
     }
 ?>

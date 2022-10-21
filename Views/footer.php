@@ -7,7 +7,7 @@
   </div>
 </div>
 <!-- JAVASCRIPTS -->
-<script src="<?php echo JS_PATH?>jquery.min.js"></script> 
-<script src="<?php echo JS_PATH?>jquery.mobilemenu.js"></script>
+<script src="layout\scripts\jquery.min.js"></script> 
+<script src="layout\scripts\jquery.mobilemenu.js"></script>
 </body>
 </html>

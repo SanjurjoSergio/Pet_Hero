@@ -13,7 +13,7 @@ include_once('nav-bar.php');
         <div class="content">
             <div id="comments" style="align-items:center;">
                 <h2>Ingresar Guardian</h2>
-                <form action="<?php echo FRONT_ROOT . "Guardian/Add" ?>" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
+                <form action="..\Guardian/Add" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
                     <table>
                         <thead>
                             <tr>

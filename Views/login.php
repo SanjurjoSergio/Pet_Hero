@@ -1,12 +1,12 @@
 <?php 
  include('header.php');
- include('nav-bar.php'); 
+
 ?>
 <div class="wrapper row4">
 <main class="container clear" style="width: max-content;"> 
   <div class="content"> 
       <h2>LOGIN</h2>
-        <form action="<?php echo FRONT_ROOT ?>Auth/Login" method="POST" class="login-form bg-dark-alpha p-5 text-white">
+        <form action="..\Auth/Login" method="POST" class="login-form bg-dark-alpha p-5 text-white">
           <div class="form-group">
             <label for="">Usuario</label>
             <input type="text" name="usuario" class="form-control form-control-lg" placeholder="Ingresar usuario" required>

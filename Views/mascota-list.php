@@ -44,7 +44,7 @@ include_once('nav-bar.php');
                         ?>
                     </tbody>
                 </table>
-                <form action="<?php echo FRONT_ROOT . "Mascota/Delete" ?>" method="post">
+                <form action="..\Mascota/Delete" method="post">
                     <table style="max-width: 35%;">
                         <thead>
                             <tr>

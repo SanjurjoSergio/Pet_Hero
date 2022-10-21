@@ -14,32 +14,19 @@
 
   Autoload::start();
 
-  require_once VIEWS_PATH . 'header.php';
+  //require_once 'C:\xampp\htdocs\Practicos\Pet_Hero\Views\header.php';
   Router::Route(new Request());
-  require_once VIEWS_PATH . 'footer.php';
+  //require_once 'C:\xampp\htdocs\Practicos\Pet_Hero\Views\footer.php';
 
-//comentario normal
-//**Comentario Brillo
-//! Comentario Rojo
-//? Comentario Azul
-//TODO: comentario naranja
-
-
-  /*
-  require "Model/Usuario.php";
-  require "Model/Duenio.php";
-  
-  use Model\Duenio as Duenio;
-
-  $duenio = new Duenio();
-  $duenio->setUsuario("uno");
-  $duenio->setContrasenia("elUno");
-
-  $duenio->setNombre("jorge");
-  $duenio->setDni("20333111");
-  $duenio->setDireccion("Las lomas 223");
-  $duenio->setTelefono("155-363545");
-  var_dump($duenio);
-*/
   
 ?>
+
+
+
+
+
+
+
+
+
+

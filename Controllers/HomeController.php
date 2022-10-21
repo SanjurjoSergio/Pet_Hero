@@ -11,7 +11,8 @@
                 $controller->List();
             }
             else
-                require_once(VIEWS_PATH.'login.php');
+               require_once("../" . VIEWS_PATH . "login.php");
+             // header("location:" . "Auth/Login" );
         }
     }
 ?>

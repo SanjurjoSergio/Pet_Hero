@@ -49,19 +49,19 @@
             }
             else 
             {
-              require_once(VIEWS_PATH."login.php");
+              require_once("C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php");
             }
           }
           else
           {
-            require_once(VIEWS_PATH."login.php");
+            require_once("C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php");
           }
         }
 
         public function Logout()
         {
           session_destroy();
-          require_once(VIEWS_PATH."login.php");
+          require_once("C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php");
         }
     }
 ?>

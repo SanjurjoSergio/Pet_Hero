@@ -1,0 +1,11 @@
+[{
+    "usuario": "uno",
+    "contrasenia": "123",
+    "tipo": "D"
+  },
+  {
+    "usuario": "dos",
+    "contrasenia": "234",
+    "tipo": "G"
+  }
+]

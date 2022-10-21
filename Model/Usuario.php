@@ -3,7 +3,7 @@ namespace Model;
 
 use JsonSerializable;
 
-abstract class Usuario {
+class Usuario {
 
     private $usuario;
     private $contrasenia;
