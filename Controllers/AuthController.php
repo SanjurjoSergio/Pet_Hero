@@ -22,46 +22,49 @@
         }
 
         public function Login($usuario, $contrasenia) 
-        {
+        {        
           $nuevoUsuario = new Usuario();
           $nuevoUsuario = $this->usuarioDao->getByUsuario($usuario);
           if($nuevoUsuario)
           {
             if($nuevoUsuario->getContrasenia() == $contrasenia)
-            {
-              $_SESSION['usuario'] = $nuevoUsuario->getUsuario();
-              $_SESSION['tipo'] = $nuevoUsuario->getTipo();
-              if($_SESSION['tipo'] == 'D')
+            {              
+              if($nuevoUsuario->getTipo() == 'D')
               {
-                $nuevoUsuario = new Duenio();
-                $nuevoUsuario = $this->duenioDao->getByUsuario($usuario);
-                $_SESSION['dni'] = $nuevoUsuario->getDni();
+
+                $nuevoDuenio = new Duenio();
+                $nuevoDuenio = $this->duenioDao->getByUsuario($usuario);
+                $_SESSION ['usuario']= $nuevoDuenio;
+                $_SESSION ['tipo'] = $nuevoDuenio->getTipo();
+                $_SESSION ['dni'] = $nuevoDuenio->getDni();
+                               
+                header("location: ../Views/duenio-home.php");             
               }
               else
               {
-                $nuevoUsuario = new Guardian();
-                $nuevoUsuario = $this->guardianDao->getByUsuario($usuario);
-                $_SESSION['cuil'] = $nuevoUsuario->getCuil();
-              }
-              
-              $controller = new ReservaController();
-              $controller->List();
+                $nuevoGuardian = new Guardian();
+                $nuevoGuardian = $this->guardianDao->getByUsuario($usuario);
+                $_SESSION ['usuario']= $nuevoGuardian;
+                $_SESSION ['tipo'] = $nuevoGuardian->getTipo();
+                $_SESSION['cuil'] = $nuevoGuardian->getCuil();
+                header("location: ../Views/guardian-home.php"); 
+              }              
             }
             else 
             {
-              require_once(VIEWS_PATH."login.php");
+              require_once("C:\\xampp\htdocs\Practicos\Pet_Hero\Views\login.php");
             }
           }
           else
           {
-            require_once(VIEWS_PATH."login.php");
+            require_once("C:\\xampp\htdocs\Practicos\Pet_Hero\Controllers\UsuarioController\Add");
           }
         }
 
         public function Logout()
         {
           session_destroy();
-          require_once(VIEWS_PATH."login.php");
+          require_once("C:\\xampp\htdocs\Practicos\Pet_Hero\Views\login.php");
         }
     }
 ?>

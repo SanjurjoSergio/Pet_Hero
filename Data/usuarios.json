@@ -1,0 +1,27 @@
+[
+    {
+        "usuario": "uno",
+        "contrasenia": "123",
+        "tipo": "D"
+    },
+    {
+        "usuario": "dos",
+        "contrasenia": "234",
+        "tipo": "G"
+    },
+    {
+        "usuario": "tres",
+        "contrasenia": "345",
+        "tipo": "D"
+    },
+    {
+        "usuario": "cuatro",
+        "contrasenia": "456",
+        "tipo": "G"
+    },
+    {
+        "usuario": "seis",
+        "contrasenia": "678",
+        "tipo": "G"
+    }
+]

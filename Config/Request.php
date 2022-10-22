@@ -13,7 +13,7 @@
 
             $urlArray = explode("/", isset($url) ? $url : "");
 
-         
+            
             $urlArray = array_filter($urlArray);
 
             if(empty($urlArray))

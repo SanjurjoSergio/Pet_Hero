@@ -1,6 +1,16 @@
 <?php
+namespace Views;
+session_start();
 include_once('header.php');
 include_once('nav-bar.php');
+require_once("../DAO/GuardianDAO.php");
+require_once("../Model/Guardian.php");
+require_once("../Controllers/GuardianController.php");
+Use DAO\GuardianDAO as GuardianDAO;
+Use Model\Guardian as Guardian;
+$unGuardian = new GuardianDAO();
+$guardianList = $unGuardian->getAll();
+
 ?>
 
 <div id="breadcrumb" class="hoc clear">
@@ -26,7 +36,7 @@ include_once('nav-bar.php');
                     <tbody>
                         <?php
                         foreach ($guardianList as $guardian) {
-                           //! if ($guardian->getTamanioMascota() == "TAMAÑO DESEADO") {
+                           //! if (($guardian->getTamanioMascota() == $unTamanio) &&(%guardian->getDisponibilidad() == $unaDisponibilidad)) {  para filtrar la lista
                         ?>
                                 <tr>
                                     <td><?php echo $guardian->getNombre() ?></td>

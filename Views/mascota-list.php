@@ -1,6 +1,16 @@
 <?php
+namespace Views;
+session_start();
 include_once('header.php');
 include_once('nav-bar.php');
+require_once("../DAO/MascotaDAO.php");
+require_once("../Model/Mascota.php");
+require_once("../Controllers/MascotaController.php");
+Use DAO\MascotaDAO as MascotaDAO;
+Use Model\Mascota as Mascota;
+$unamascota = new MascotaDAO();
+$mascotaList = $unamascota->getAll();
+
 ?>
 
 <div id="breadcrumb" class="hoc clear">
@@ -20,14 +30,14 @@ include_once('nav-bar.php');
                             <th style="width: 150px;">Raza</th>
                             <th style="width: 150px;">Tamanio</th>
                             <th style="width: 150px;">Observaciones</th>
-                            //*<th style="width: 120px;">Imagen</th>
-                            //*<th style="width: 120px;">Video</th>
+                            <th style="width: 120px;">Imagen</th>
+                            <th style="width: 120px;">Video</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
+                        <?php                                              
                         foreach ($mascotaList as $mascota) {
-                            if ($mascota->getDniDuenio() == $_SESSION['dni']) {
+                            if($mascota->getDniDuenio() == $_SESSION['dni']) {
                         ?>
                                 <tr>
                                     <td><?php echo $mascota->getId() ?></td>
@@ -35,8 +45,8 @@ include_once('nav-bar.php');
                                     <td><?php echo $mascota->getRaza() ?></td>
                                     <td><?php echo $mascota->getTamanio() ?></td>
                                     <td><?php echo $mascota->getObservaciones() ?></td>
-                                   //* <td><?php echo $mascota->getImagen() ?></td>
-                                   //* <td><?php echo $mascota->getVideo() ?></td>
+                                    <td><?php echo $mascota->getImagen() ?></td>
+                                    <td><?php echo $mascota->getVideo() ?></td>
                                 </tr>
                         <?php
                             }
@@ -44,7 +54,7 @@ include_once('nav-bar.php');
                         ?>
                     </tbody>
                 </table>
-                <form action="<?php echo FRONT_ROOT . "Mascota/Delete" ?>" method="post">
+                <form action="..\Mascota/Delete" method="post">
                     <table style="max-width: 35%;">
                         <thead>
                             <tr>

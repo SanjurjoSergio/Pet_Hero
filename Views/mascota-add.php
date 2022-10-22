@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once('header.php');
 include_once('nav-bar.php');
 ?>
@@ -13,7 +14,7 @@ include_once('nav-bar.php');
         <div class="content">
             <div id="comments" style="align-items:center;">
                 <h2>Ingresar Mascota</h2>
-                <form action="<?php echo FRONT_ROOT . "Mascota/Add" ?>" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
+                <form action="..\Mascota/Add" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
                     <table>
                         <thead>
                             <tr>
@@ -22,8 +23,8 @@ include_once('nav-bar.php');
                                 <th>Raza</th>
                                 <th>Tamaño</th>
                                 <th>Observaciones</th>
-                                //* <th>Imagen</th>
-                                //* <th>Video</th>
+                                <th>Imagen</th>
+                                <th>Video</th>
                             </tr>
                         </thead>
                         <tbody align="center">
@@ -47,8 +48,8 @@ include_once('nav-bar.php');
                                 <td>
                                     <textarea name="observaciones" cols="60" rows="1"></textarea>
                                 </td>
-                               //* <td><input type="IMAGEN" name="imagen"  style="max-width: 120px" required></td>  //!imagen
-                              //*  <td><input type= "VIDEO" name="video"  style="max-width: 120px" ></td>           //!video
+                                <td><input type="text" name="imagen"  style="max-width: 120px" required></td>  //!imagen
+                                <td><input type= "text" name="video"  style="max-width: 120px" ></td>           //!video
                             </tr>
                         </tbody>
                     </table>

@@ -1,0 +1,35 @@
+[
+    {
+        "usuario": "dos",
+        "contrasenia": "234",
+        "tipo": "G",
+        "nombre": "Dos",
+        "direccion": "lacalle22",
+        "cuil": "22-22222222-2",
+        "disponibilidad": "tarde",
+        "tamanioMascota": "grande",
+        "precio": "300"
+    },
+    {
+        "usuario": "cuatro",
+        "contrasenia": "456",
+        "tipo": "G",
+        "nombre": "cuatro",
+        "direccion": "lacalle44",
+        "cuil": "44-44444444-4",
+        "disponibilidad": "noche",
+        "tamanioMascota": "chico",
+        "precio": "44"
+    },
+    {
+        "usuario": "seis",
+        "contrasenia": "678",
+        "tipo": "G",
+        "nombre": "seis",
+        "direccion": "lacalle66",
+        "cuil": "66-66666666-6",
+        "disponibilidad": "noche",
+        "tamanioMascota": "mediano",
+        "precio": "66"
+    }
+]
