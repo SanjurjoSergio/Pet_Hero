@@ -101,7 +101,7 @@
 
           $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
           
-          file_put_contents($this->fileName, $jsonContent);
+          file_put_contents($this->filename, $jsonContent);
       }
 
 
@@ -118,7 +118,7 @@
           {
             $mascota = new Mascota();
             
-            $mascota->setId($item["dniDuenio"]);
+            $mascota->setDniDuenio($item["dniDuenio"]);
             $mascota->setId($item["id"]);
             $mascota->setNombre($item["nombre"]);
             $mascota->setRaza($item["raza"]);

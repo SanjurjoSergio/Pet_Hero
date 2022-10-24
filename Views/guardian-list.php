@@ -1,6 +1,20 @@
 <?php
+
+namespace Views;
+
+session_start();
 include_once('header.php');
 include_once('nav-bar.php');
+require_once("../DAO/GuardianDAO.php");
+require_once("../Model/Guardian.php");
+require_once("../Controllers/GuardianController.php");
+
+use DAO\GuardianDAO as GuardianDAO;
+use Model\Guardian as Guardian;
+
+$unGuardian = new GuardianDAO();
+$guardianList = $unGuardian->getAll();
+
 ?>
 
 <div id="breadcrumb" class="hoc clear">
@@ -26,22 +40,29 @@ include_once('nav-bar.php');
                     <tbody>
                         <?php
                         foreach ($guardianList as $guardian) {
-                           //! if ($guardian->getTamanioMascota() == "TAMAÑO DESEADO") {
+                            //! if (($guardian->getTamanioMascota() == $unTamanio) &&(%guardian->getDisponibilidad() == $unaDisponibilidad)) {  para filtrar la lista
                         ?>
-                                <tr>
-                                    <td><?php echo $guardian->getNombre() ?></td>
-                                    <td><?php echo $guardian->getDireccion() ?></td>
-                                    <td><?php echo $guardian->getCuil() ?></td>
-                                    <td><?php echo $guardian->getDisponibilidad() ?></td>
-                                    <td><?php echo $guardian->getTamanioMascota() ?></td>
-                                    <td><?php echo $guardian->getPrecio() ?></td>
-                                </tr>
+                            <tr>
+                                <td><?php echo $guardian->getNombre() ?></td>
+                                <td><?php echo $guardian->getDireccion() ?></td>
+                                <td><?php echo $guardian->getCuil() ?></td>
+
+                                <td><?php if ($guardian->getTamanioMascota() != null) {
+                                        echo implode(", ", $guardian->getTamanioMascota());
+                                    } ?></td>
+
+                                <td><?php if ($guardian->getDisponibilidad() != null) {
+                                        echo implode(", ", $guardian->getDisponibilidad());
+                                    } ?></td>
+                              
+                                <td><?php echo $guardian->getPrecio() ?></td>
+                            </tr>
                         <?php
-                            }
-                       //! }
+                        }
+                        //! }
                         ?>
                     </tbody>
-                </table>                
+                </table>
             </div>
         </div>
         <!-- / main body -->

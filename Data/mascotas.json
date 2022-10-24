@@ -1,0 +1,72 @@
+[
+    {
+        "dniDuenio": "11111111",
+        "id": "22",
+        "nombre": "pipo",
+        "raza": "conejo",
+        "tamanio": "chico",
+        "observaciones": "otro conejo",
+        "imagen": "no hay",
+        "video": "no quiere"
+    },
+    {
+        "dniDuenio": "11111111",
+        "id": "33",
+        "nombre": "pipa",
+        "raza": "conejo",
+        "tamanio": "mediano",
+        "observaciones": "no es un conejo",
+        "imagen": "si",
+        "video": "sisis"
+    },
+    {
+        "dniDuenio": "11111111",
+        "id": "11",
+        "nombre": "pepo",
+        "raza": "conejo",
+        "tamanio": "mediano",
+        "observaciones": "dale que va",
+        "imagen": "conejo",
+        "video": "rabit"
+    },
+    {
+        "dniDuenio": "11111111",
+        "id": "44",
+        "nombre": "pupa",
+        "raza": "conejo",
+        "tamanio": "mediano",
+        "observaciones": "ultimo conejo",
+        "imagen": "es un conejo",
+        "video": "rabit re"
+    },
+    {
+        "dniDuenio": "33-333333",
+        "id": "111",
+        "nombre": "trejo",
+        "raza": "caballo",
+        "tamanio": "grande",
+        "observaciones": "un caballo",
+        "imagen": "es un caballo",
+        "video": "horse"
+    },
+    {
+        "dniDuenio": "33-333333",
+        "id": "1010",
+        "nombre": "lala",
+        "raza": "huron",
+        "tamanio": "chico",
+        "observaciones": "es un huron",
+        "imagen": "el huron",
+        "video": "re huron"
+    },
+    {
+        "dniDuenio": "32937154",
+        "id": "8801",
+        "nombre": "pachorra",
+        "raza": "propaganda",
+        "tamanio": "mediano",
+        "observaciones": "el pachorra",
+        "imagen": "tr",
+        "video": "tr"
+    }
+]

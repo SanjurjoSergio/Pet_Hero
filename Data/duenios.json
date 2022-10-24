@@ -1,0 +1,29 @@
+[
+    {
+        "usuario": "uno@mail.com",
+        "contrasenia": "123",
+        "tipo": "D",
+        "nombre": "Uno",
+        "dni": "11111111",
+        "direccion": "Calle 1",
+        "telefono": "111-111111"
+    },
+    {
+        "usuario": "tres@mail.com",
+        "contrasenia": "345",
+        "tipo": "D",
+        "nombre": "tres",
+        "dni": "33-333333",
+        "direccion": "lacalle33",
+        "telefono": "333-333333"
+    },
+    {
+        "usuario": "moni@gmail.com",
+        "contrasenia": "123",
+        "tipo": "D",
+        "nombre": "Moni Argento",
+        "dni": "32937154",
+        "direccion": "lacalleMoni22",
+        "telefono": "155-555555"
+    }
+]

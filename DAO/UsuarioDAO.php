@@ -9,7 +9,8 @@
 
       public function __construct()
       {
-        $this->filename = dirname(__DIR__)."/Data/usuarios.json";
+        //$this->filename = dirname(__DIR__)."/Data/usuarios.json";  
+        $this->filename = "C:\\xampp\htdocs\Practicos\Pet_Hero\Data\usuarios.json"; 
       }
 
       public function GetAll()
@@ -29,7 +30,7 @@
         return null;
       }
 
-      public function getByTipo($tipo) //! por las dudas
+      public function getByTipo($tipo) 
       {
         $this->LoadData();
         foreach ($this->list as $item) {
@@ -64,7 +65,7 @@
 
           $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
           
-          file_put_contents($this->fileName, $jsonContent);
+          file_put_contents($this->filename, $jsonContent);
       }
 
 

@@ -1,33 +1,40 @@
 <?php
-    namespace Controllers;
-    use Model\Usuario as Usuario;
-    use DAO\UsuarioDAO as UsuarioDAO;
 
-    class UsuarioController
+namespace Controllers;
+
+use Model\Usuario as Usuario;
+use DAO\UsuarioDAO as UsuarioDAO;
+
+class UsuarioController
+{
+    public function Add($usuario = '', $contrasenia = '', $tipo = '')
     {
-        public function Add($usuario = '', $contrasenia = '', $tipo = '')
-        {
-          if(isset($_SESSION['usuario']))
-             {  
-              if($usuario != '' || $contrasenia != '' || $tipo != '') {
-                $usuario = new Usuario();
+        if ($usuario != '' || $contrasenia != '' || $tipo != '') {
+            $nuevoUsuario = new Usuario();
 
-                $usuario->setUsuario($usuario);
-                $usuario->setContrasenia($contrasenia);
-                $usuario->setTipo($tipo);
-                             
-                             
-                $usuarioDao = new UsuarioDAO();
-                $usuarioDao->Add($usuario);
-                if($_SESSION['tipo'] == 'G'){
-                    require_once(VIEWS_PATH. 'guardian-add.php');
+            $nuevoUsuario->setUsuario($usuario);
+            $nuevoUsuario->setContrasenia($contrasenia);
+            $nuevoUsuario->setTipo($tipo);
 
-                }else{
-                    require_once(VIEWS_PATH. 'duenio-add.php');
-                }
+
+            $usuarioDao = new UsuarioDAO();
+            $usuarioDao->Add($nuevoUsuario);
+
+            session_start();
+            $_SESSION['usuario'] = $nuevoUsuario->getUsuario();
+            $_SESSION['contrasenia'] = $nuevoUsuario->getContrasenia();
+            $_SESSION['tipo'] = $nuevoUsuario->getTipo();
+
+            if ($nuevoUsuario->getTipo() == 'G') {
+                // require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\guardian-add.php');
+                header("location: ../Views/guardian-add.php");
+                //header("location: Guardian/Add");
+            } else if ($nuevoUsuario->getTipo() == 'D') {
+                //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\duenio-add.php');
+                header("location: ../Views/duenio-add.php");
+                //header("location: Duenio/Add");
             }
-          else
-            require_once(VIEWS_PATH.'login.php');
-        }
+        } else
+        header("location: ../Views/usuario-add.php");
     }
 }

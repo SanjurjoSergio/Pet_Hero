@@ -13,7 +13,7 @@ include_once('nav-bar.php');
         <div class="content">
             <div id="comments" style="align-items:center;">
                 <h2>Ingresar Guardian</h2>
-                <form action="<?php echo FRONT_ROOT . "Guardian/Add" ?>" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
+                <form action="..\Guardian/Add" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
                     <table>
                         <thead>
                             <tr>
@@ -37,20 +37,23 @@ include_once('nav-bar.php');
                                     <input type="text" name="cuil" size="22" required>
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="horario1" value="maniana">Mañana
-                                    <input type="checkbox" name="horario2" value="tarde">Tarde
-                                    <input type="checkbox" name="horario3" value="noche">Noche
-
+                                    <input type="checkbox" name="disponibilidad[]" value="lunes">Lunes  
+                                    <input type="checkbox" name="disponibilidad[]" value="martes">Martes 
+                                    <input type="checkbox" name="disponibilidad[]" value="miercoles">Miercoles 
+                                    <input type="checkbox" name="disponibilidad[]" value="jueves">Jueves
+                                    <input type="checkbox" name="disponibilidad[]" value="viernes">Viernes 
+                                    <input type="checkbox" name="disponibilidad[]" value="sabado">Sabado 
+                                    <input type="checkbox" name="disponibilidad[]" value="domingo">Domingo                                                                     
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="tamanio1" value="chico">Chico
-                                    <input type="checkbox" name="tamanio2" value="mediano">Mediano
-                                    <input type="checkbox" name="tamanio3" value="grande">Grande
+                                    <input type="checkbox" name="tamanio[]" value="chico">Chico
+                                    <input type="checkbox" name="tamanio[]" value="mediano">Mediano
+                                    <input type="checkbox" name="tamanio[]" value="grande">Grande
                                 </td>
                                 <td>
                                     <input type="number" name="precio" size="22" required>
                                 </td>
-                                
+
                             </tr>
                         </tbody>
                     </table>

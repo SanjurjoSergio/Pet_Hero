@@ -6,7 +6,7 @@ include('nav-bar.php');
     <div class="overlay">
         <div id="breadcrumb" class="clear">
             <ul>
-                <li><a href="<?php echo FRONT_ROOT ?>">Home</a></li> //! tal vez modificar
+                <li><a href="C:\xampp\htdocs\Practicos\Pet_Hero\Home\Index">Home</a></li> //! tal vez modificar
                 <li><a href="#">Edit</a></li>
             </ul>
         </div>
@@ -18,7 +18,7 @@ include('nav-bar.php');
         <div class="content">
             <div id="comments">
                 <h2>Actualizar Observaciones</h2>
-                <form action="<?php FRONT_ROOT ?>Mascota/UpdateObservaciones" method="POST" style="background-color: #EAEDED;padding: 2rem !important;">
+                <form action="..\Mascota/UpdateObservaciones" method="POST" style="background-color: #EAEDED;padding: 2rem !important;">
                     <table>
                         <thead>
                             <tr>

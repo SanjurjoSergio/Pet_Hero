@@ -55,7 +55,7 @@
 
           $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
           
-          file_put_contents($this->fileName, $jsonContent);
+          file_put_contents($this->filename, $jsonContent);
       }
 
       private function LoadData() 

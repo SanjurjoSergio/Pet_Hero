@@ -1,0 +1,37 @@
+[
+    {
+        "usuario": "uno@mail.com",
+        "contrasenia": "123",
+        "tipo": "D"
+    },
+    {
+        "usuario": "dos@mail.com",
+        "contrasenia": "234",
+        "tipo": "G"
+    },
+    {
+        "usuario": "tres@mail.com",
+        "contrasenia": "345",
+        "tipo": "D"
+    },
+    {
+        "usuario": "cuatro@mail.com",
+        "contrasenia": "456",
+        "tipo": "G"
+    },
+    {
+        "usuario": "seis@mail.com",
+        "contrasenia": "678",
+        "tipo": "G"
+    },
+    {
+        "usuario": "pepe@gmail.com",
+        "contrasenia": "123",
+        "tipo": "G"
+    },
+    {
+        "usuario": "moni@gmail.com",
+        "contrasenia": "123",
+        "tipo": "D"
+    }
+]
