@@ -39,6 +39,23 @@
         return null;
       }
       
+      public function getByTamanioMascota($tamanio)
+      {
+        $this->LoadData();
+        $arrayGuardianes = array();
+        foreach ($this->list as $item) { 
+          $arrayTamanios = array();
+          //array_push($arrayTamanios, $item->getTamanioMascota());
+          $arrayTamanios = $item->getTamanioMascota();
+          if (in_array($tamanio, $arrayTamanios)){
+            array_push($arrayGuardianes, $item);
+            return $arrayGuardianes;
+          }
+        }
+        return null;
+      }
+
+
       public function Add(Guardian $guardian)
       {
           $this->LoadData(); 

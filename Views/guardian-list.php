@@ -32,34 +32,40 @@ $guardianList = $unGuardian->getAll();
                             <th style="width: 150px;">Nombre</th>
                             <th style="width: 150px;">Direccion</th>
                             <th style="width: 150px;">Cuil</th>
-                            <th style="width: 150px;">Disponibilidad</th>
                             <th style="width: 150px;">Tamaño de Mascotas</th>
+                            <th style="width: 150px;">Disponibilidad</th>
                             <th style="width: 150px;">Precio</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
+                        <?php 
                         foreach ($guardianList as $guardian) {
-                            //! if (($guardian->getTamanioMascota() == $unTamanio) &&(%guardian->getDisponibilidad() == $unaDisponibilidad)) {  para filtrar la lista
+                            if (in_array($_SESSION['tamanioMascota'], $guardian->getTamanioMascota())) {
                         ?>
-                            <tr>
-                                <td><?php echo $guardian->getNombre() ?></td>
-                                <td><?php echo $guardian->getDireccion() ?></td>
-                                <td><?php echo $guardian->getCuil() ?></td>
+                                <tr>
+                                    <td><?php echo $guardian->getNombre() ?></td>
+                                    <td><?php echo $guardian->getDireccion() ?></td>
+                                    <td><?php echo $guardian->getCuil() ?></td>
 
-                                <td><?php if ($guardian->getTamanioMascota() != null) {
-                                        echo implode(", ", $guardian->getTamanioMascota());
-                                    } ?></td>
+                                    <td><?php if ($guardian->getTamanioMascota() != null) {
+                                            echo implode(", ", $guardian->getTamanioMascota());
+                                        } ?></td>
 
-                                <td><?php if ($guardian->getDisponibilidad() != null) {
-                                        echo implode(", ", $guardian->getDisponibilidad());
-                                    } ?></td>
-                              
-                                <td><?php echo $guardian->getPrecio() ?></td>
-                            </tr>
+                                    <td><?php if ($guardian->getDisponibilidad() != null) {
+                                            echo implode(", ", $guardian->getDisponibilidad());
+                                        } ?></td>
+
+                                    <td><?php echo $guardian->getPrecio() ?></td>
+                                    <form action="../Reserva/SetReserva" method="post">
+                                    <td>
+                                        <input type="hidden" name="cuil" value="<?php echo $guardian->getCuil() ?>">
+                                        <button type="submit" class="btn" value="">Solicitar Reserva</button>
+                                    </td>
+                                    </form>
+                                </tr>
                         <?php
+                            }                            
                         }
-                        //! }
                         ?>
                     </tbody>
                 </table>

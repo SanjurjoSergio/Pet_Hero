@@ -90,11 +90,13 @@
             $valuesArray["dniDuenio"] = $mascota->getDniDuenio();
             $valuesArray["id"] = $mascota->getId();
             $valuesArray["nombre"] = $mascota->getNombre();
+            $valuesArray["familia"] = $mascota->getFamilia();
             $valuesArray["raza"] = $mascota->getRaza();
             $valuesArray["tamanio"] = $mascota->getTamanio();
             $valuesArray["observaciones"] = $mascota->getObservaciones();
             $valuesArray["imagen"] = $mascota->getImagen();
             $valuesArray["video"] = $mascota->getVideo();
+            $valuesArray["libreta"] = $mascota->getLibreta();
 
               array_push($arrayToEncode, $valuesArray);
           }
@@ -121,11 +123,13 @@
             $mascota->setDniDuenio($item["dniDuenio"]);
             $mascota->setId($item["id"]);
             $mascota->setNombre($item["nombre"]);
+            $mascota->setFamilia($item["familia"]);
             $mascota->setRaza($item["raza"]);
             $mascota->setTamanio($item["tamanio"]);
             $mascota->setObservaciones($item["observaciones"]);
             $mascota->setImagen($item["imagen"]);
             $mascota->setVideo($item["video"]);
+            $mascota->setLibreta($item["libreta"]);
            
             array_push($this->list, $mascota);
           }

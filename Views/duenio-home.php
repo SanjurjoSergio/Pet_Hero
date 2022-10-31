@@ -15,7 +15,6 @@ include_once('nav-bar.php');
         
         
         <button onclick="location = '../Mascota/List' ">Mis Mascotas</button>
-        <button onclick="location = '../Guardian/List' ">Guardianes</button>
         <button onclick="location = '../Reserva/List' ">Reservas Pendientes</button>
         <button onclick="location = '../Reserva/List' ">Historial de Reservas</button>
         

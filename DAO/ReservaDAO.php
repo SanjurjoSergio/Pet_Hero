@@ -39,7 +39,7 @@
         foreach($this->list as $item) 
         {
           if($item->getDniDuenio() == $dniDuenio)
-            array_push($listByName, $item);
+            array_push($listByDniDuenio, $item);
         }
         return $listByDniDuenio;
       }
@@ -78,6 +78,28 @@
         }
         return false;
       }
+
+      public function UpdateAuto()
+      {
+        //$this->loadData();
+        foreach ($this->list as $item) {
+          if ($item->getEstado() == "P" && $item->getFechaFinal() < date('Y-m-d')) {
+            $item->setEstado("F");
+            $this->SaveData();
+            return true;
+          }else if($item->getEstado() == "A" && $item->getFechaInicio() <= date('Y-m-d')){
+            $item->setEstado("P");
+            $this->SaveData();
+            return true;
+          } else if($item->getEstado() == "S" && $item->getFechaInicio() < date('Y-m-d')){
+            $item->setEstado("R");
+            $this->SaveData();
+            return true;
+          }
+        }
+        return false;
+      }
+
 
       public function Delete($id)
       {
@@ -118,6 +140,7 @@
             
             $reserva->setDniDuenio($item["dniDuenio"]);
             $reserva->setCuilGuardian($item["cuilGuardian"]);
+            $reserva->setIdMascota($item["idMascota"]);
             $reserva->setId($item["id"]);
             $reserva->setFechaInicio($item["fechaInicio"]);
             $reserva->setFechaFinal($item["fechaFinal"]);
@@ -127,8 +150,9 @@
             array_push($this->list, $reserva);
             if ($reserva->getId() > $this->maxId) {
               $this->maxId = $reserva->getId();
-            }
+            }            
           }
+          $this->UpdateAuto();
         }
       }
     }

@@ -12,25 +12,38 @@ class DuenioController
     if (isset($_SESSION['usuario']))
       if ($_SESSION['tipo'] == 'D') {
         if ($nombre != '' || $dni != '' || $direccion != '' || $telefono != '') {
-          $duenio = new Duenio();
-
-          $duenio->setUsuario($_SESSION['usuario']);
-          $duenio->setContrasenia($_SESSION['contrasenia']);
-          $duenio->setTipo($_SESSION['tipo']);
-
-          $duenio->setNombre($nombre);
-          $duenio->setDni($dni);
-          $duenio->setDireccion($direccion);
-          $duenio->setTelefono($telefono);
-
 
           $duenioDao = new DuenioDAO();
-          $duenioDao->Add($duenio);
 
-          //header("location: ../Views/duenio-home.php");
-          //!echo '<script> if(confirm("Regsitro Exitoso, Vuelva a Loguear")); </script>'; ver como poner mensaje de exito
-          session_destroy();
-          header("location: ../Views/login.php");
+          if ($duenioDao->getByDni($dni)) {
+            echo "<script> if(confirm('DNI Existente'));";                         //! mensaje de validacion
+            echo "window.location = '../Views/duenio-add.php'; </script>";         //! cambia por el header  
+
+          } else {
+
+
+            $duenio = new Duenio();
+
+            $duenio->setUsuario($_SESSION['usuario']);
+            $duenio->setContrasenia($_SESSION['contrasenia']);
+            $duenio->setTipo($_SESSION['tipo']);
+
+            $duenio->setNombre($nombre);
+            $duenio->setDni($dni);
+            $duenio->setDireccion($direccion);
+            $duenio->setTelefono($telefono);
+
+            $duenioDao->Add($duenio);
+
+            //header("location: ../Views/duenio-home.php");
+            
+            session_destroy();
+            //header("location: ../Views/login.php");
+            echo "<script> if(confirm('Cuenta Registrada, ingrese con sus datos'));";                     
+            echo "window.location = '../Views/login.php'; </script>";  
+
+
+          }
         } else {
           header("location: ../Views/duenio-add.php");
         }

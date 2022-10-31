@@ -10,11 +10,13 @@ class Mascota
     private $dniDuenio;
     private $id;
     private $nombre;
+    private $familia;
     private $raza;
     private $tamanio;
     private $observaciones;
     private $imagen;
     private $video;
+    private $libreta;
 
 
 
@@ -48,6 +50,16 @@ class Mascota
     public function setNombre($nombre): self
     {
         $this->nombre = $nombre;
+        return $this;
+    }
+
+    public function getFamilia()
+    {
+        return $this->familia;
+    }
+    public function setFamilia($familia): self
+    {
+        $this->familia = $familia;
         return $this;
     }
 
@@ -106,18 +118,28 @@ class Mascota
         return $this;
     }
 
+    public function getLibreta()
+    {
+        return $this->libreta;
+    }
+    public function setLibreta($libreta): self
+    {
+        $this->libreta = $libreta;
+        return $this;
+    }
+
     public function toArray()
     {
         $me["dniDuenio"] = $this->dniDuenio;
         $me["id"] = $this->id;
         $me["nombre"] = $this->nombre;
+        $me["familia"] = $this->familia;
         $me["raza"] = $this->raza;
         $me["tamanio"] = $this->tamanio;
         $me["observaciones"] = $this->observaciones;
         $me["imagen"] = $this->imagen;
         $me["video"] = $this->video;
+        $me["libreta"] = $this->libreta;
         return $me;
     }
-
-
 }

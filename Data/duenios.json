@@ -4,8 +4,8 @@
         "contrasenia": "123",
         "tipo": "D",
         "nombre": "Uno",
-        "dni": "11111111",
-        "direccion": "Calle 1",
+        "dni": "11-111111",
+        "direccion": "lacalle11",
         "telefono": "111-111111"
     },
     {
@@ -18,12 +18,12 @@
         "telefono": "333-333333"
     },
     {
-        "usuario": "moni@gmail.com",
-        "contrasenia": "123",
+        "usuario": "cinco@mail.com",
+        "contrasenia": "567",
         "tipo": "D",
-        "nombre": "Moni Argento",
-        "dni": "32937154",
-        "direccion": "lacalleMoni22",
-        "telefono": "155-555555"
+        "nombre": "cinco",
+        "dni": "55-555555",
+        "direccion": "lacalle55",
+        "telefono": "555-555555"
     }
 ]

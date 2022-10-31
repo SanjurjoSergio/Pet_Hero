@@ -49,21 +49,5 @@
             "grande"
         ],
         "precio": "66"
-    },
-    {
-        "usuario": "pepe@gmail.com",
-        "contrasenia": "123",
-        "tipo": "G",
-        "nombre": "pepe",
-        "direccion": "lacalledePEPE11",
-        "cuil": "88-88888888-8",
-        "disponibilidad": [
-            "viernes",
-            "sabado"
-        ],
-        "tamanioMascota": [
-            "grande"
-        ],
-        "precio": "500"
     }
 ]
