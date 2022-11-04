@@ -49,6 +49,7 @@ $duenioList = $unDuenio->getAll();
                             <th style="width: 150px;">Fecha de Inicio</th>
                             <th style="width: 150px;">Fecha de Termino</th>
                             <th style="width: 120px;">Estado de la Reserva</th> 
+                            <th style="width: 120px;">Estado Contable</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,7 +62,8 @@ $duenioList = $unDuenio->getAll();
                                     <td><?php echo $reserva->getDniDuenio() ?></td>
                                     <td><?php echo $reserva->getFechaInicio() ?></td>
                                     <td><?php echo $reserva->getFechaFinal() ?></td>
-                                    <td><?php echo $reserva->getEstadoDescripcion() ?></td>                 
+                                    <td><?php echo $reserva->getEstadoDescripcion() ?></td>    
+                                    <td><?php echo "estado del pago" ?></td>               
                                 </tr>
                         <?php
                             }

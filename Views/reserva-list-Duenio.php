@@ -1,5 +1,7 @@
 <?php
+
 namespace Views;
+
 session_start();
 include_once('header.php');
 include_once('nav-bar.php');
@@ -8,27 +10,12 @@ include_once('nav-bar.php');
 require_once("../DAO/ReservaDAO.php");
 require_once("../Model/Reserva.php");
 require_once("../Controllers/ReservaController.php");
-Use DAO\ReservaDAO as ReservaDAO;
-Use Model\Reserva as Reserva;
+
+use DAO\ReservaDAO as ReservaDAO;
+use Model\Reserva as Reserva;
+
 $unaReserva = new ReservaDAO();
 $reservaList = $unaReserva->getAllByDniDuenio($_SESSION['dni']);
-
-require_once("../DAO/MascotaDAO.php");
-require_once("../Model/Mascota.php");
-require_once("../Controllers/MascotaController.php");
-Use DAO\MascotaDAO as MascotaDAO;
-Use Model\Mascota as Mascota;
-$unamascota = new MascotaDAO();
-$mascotaList = $unamascota->getAllByDuenio($_SESSION['dni']);
-
-require_once("../DAO/GuardianDAO.php");
-require_once("../Model/Guardian.php");
-require_once("../Controllers/GuardianController.php");
-use DAO\GuardianDAO as GuardianDAO;
-use Model\Guardian as Guardian;
-$unGuardian = new GuardianDAO();
-$guardianList = $unGuardian->getAll();
-
 
 ?>
 
@@ -48,36 +35,54 @@ $guardianList = $unGuardian->getAll();
                             <th style="width: 150px;">Guardian</th>
                             <th style="width: 150px;">Fecha de Inicio</th>
                             <th style="width: 150px;">Fecha de Termino</th>
-                            <th style="width: 120px;">Estado de la Reserva</th> 
-                            <th style="width: 120px;">Cancelar Reserva</th> 
-                                                       
+                            <th style="width: 120px;">Estado de la Reserva</th>
+                            <th style="width: 120px;">Cancelar Reserva</th>
+                            <th style="width: 120px;">Realizar Pago</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php                                              
+                        <?php
                         foreach ($reservaList as $reserva) {
-                            if($reserva->getFechaFinal() >= date('Y-m-d')) {
+                            if ($reserva->getFechaFinal() >= date('Y-m-d') && $reserva->getEstado() != 'R') {
                         ?>
                                 <tr>
                                     <td><?php echo $reserva->getIdMascota() ?></td>
                                     <td><?php echo $reserva->getCuilGuardian() ?></td>
                                     <td><?php echo $reserva->getFechaInicio() ?></td>
                                     <td><?php echo $reserva->getFechaFinal() ?></td>
-                                    <td><?php echo $reserva->getEstadoDescripcion() ?></td>                            
-                                    <form action="..\Reserva/Delete" method="post">
-                                     <td>                                        
-                                        <input type="hidden" name="id" value="<?php echo $reserva->getId() ?>">
-                                        <button type="submit" class="btn" value="">X</button>
-                                      </td>
-                                    </form>
+                                    <td><?php echo $reserva->getEstadoDescripcion() ?></td>
+
+                                    <?php if ($reserva->getEstado() == 'S' || $reserva->getEstado() == 'A') { ?>
+                                        <form action="..\Reserva/Delete" method="post">
+                                            <td>
+                                                <input type="hidden" name="id" value="<?php echo $reserva->getId() ?>">
+                                                <button type="submit" class="btn" value="">X</button>
+                                            </td>
+                                        </form>
+                                    <?php } else {
+                                    ?><td></td>
+
+                                    <?php }
+                                    if ($reserva->getEstado() == 'A') { ?>
+                                        <form action="..\Pago/Add" method="post">
+                                            <td>
+                                                <input type="hidden" name="id" value="<?php echo $reserva->getId() ?>">
+                                                <input type="hidden" name="dniDuenio" value="<?php echo $reserva->getDniDuenio() ?>">
+                                                <input type="hidden" name="cuilGuardian" value="<?php echo $reserva->getCuilGuardian() ?>">
+                                                <button type="submit" class="btn" value="">X</button>
+                                            </td>
+                                        </form>
+                                    <?php } else {
+                                    ?><td></td>
                                 </tr>
-                        <?php
+                    <?php
+                                    }
+                                }
                             }
-                        }
-                        ?>
+                    ?>
                     </tbody>
                 </table>
-               
+
             </div>
         </div>
         <!-- / main body -->

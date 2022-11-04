@@ -47,11 +47,14 @@ use Model\Resenia as Resenia;
 $unaResenia = new ReseniaDAO();
 $reseniaList = $unaResenia->getAllByDuenio($_SESSION['dni']);
 
+$instanciaMascota = new Mascota();
+$instanciaGuardian = new Guardian();
+$instanciaReserva = new Reserva();
 
 ?>
 
 <div id="breadcrumb" class="hoc clear">
-    <h6 class="heading">Historial de Reservas</h6>
+    <h6 class="heading">Historial de Reseñas</h6>
 </div>
 </div>
 <div class="wrapper row3">
@@ -62,38 +65,37 @@ $reseniaList = $unaResenia->getAllByDuenio($_SESSION['dni']);
                 <table style="text-align:center;">
                     <thead>
                         <tr>
-                            <th style="width: 150px;">Mascota</th>
-                            <th style="width: 150px;">Guardian</th>
-                            <th style="width: 150px;">Fecha de Inicio</th>
-                            <th style="width: 150px;">Fecha de Termino</th>
-                            <th style="width: 120px;">Estado de la Reserva</th>
-                            <th style="width: 120px;">Agregar Resenia</th>
+                            <th style="width: 100px;">Mascota</th>
+                            <th style="width: 100px;">Guardian</th>
+                            <th style="width: 80px;">Fecha</th>
+                            <th style="width: 30px;">Puntaje</th>
+                            <th style="width: 400px;">Observaciones</th>
+                            <th style="width: 30px;">Modificar</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($reservaList as $reserva) {
-                            if ($reserva->getFechaFinal() < date('Y-m-d') || $reserva->getEstado() == 'R') {
+                        foreach ($reseniaList as $resenia) {
+                            $instanciaReserva = $unaReserva->getById($resenia->getIdReserva());
+                            $instanciaMascota = $unamascota->getById($instanciaReserva->getIdMascota());
+                            $instanciaGuardian = $unGuardian->getByCuil($resenia->getCuilGuardian());
                         ?>
-                                <tr>
-                                    <td><?php echo $reserva->getIdMascota() ?></td>
-                                    <td><?php echo $reserva->getCuilGuardian() ?></td>
-                                    <td><?php echo $reserva->getFechaInicio() ?></td>
-                                    <td><?php echo $reserva->getFechaFinal() ?></td>
-                                    <td><?php echo $reserva->getEstadoDescripcion() ?></td>
-                                    <td><?php if ($reserva->getEstado() == "F" && $unaResenia->getByIdReserva($reserva->getId()) == null) { ?>
-                                            <form action="..\Resenia/SetResenia" method="post">
-                                                <input type="hidden" name="idReserva" value="<?php echo $reserva->getId() ?>">
-                                                <input type="hidden" name="cuilGuardian" value="<?php echo $reserva->getCuilGuardian() ?>">
-                                                <button type="submit" class="btn" value="">X</button>
-                                            </form>
+                            <tr>
+                                <td><?php echo $instanciaMascota->getNombre() ?></td>
+                                <td><?php echo $instanciaGuardian->getNombre() ?></td>
+                                <td><?php echo $resenia->getFecha() ?></td>
+                                <td><?php echo $resenia->getPuntaje() . "/10" ?></td>
+                                <td><?php echo $resenia->getObservaciones() ?></td>
+                                <form action="..\Resenia/SetReseniaUpdate" method="post">
+                                    <td>
+                                        <input type="hidden" name="idResenia" value="<?php echo $resenia->getId() ?>">
+                                        <button type="submit" class="btn" value="">X</button>
                                     </td>
-                                </tr>
-                                        <?php
-                                        }
-                                    }
-                                }
-                    ?>
+                                </form>
+                            </tr>
+                        <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
 

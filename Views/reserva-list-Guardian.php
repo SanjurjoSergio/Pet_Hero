@@ -49,6 +49,7 @@ $duenioList = $unDuenio->getAll();
                             <th style="width: 150px;">Fecha de Inicio</th>
                             <th style="width: 150px;">Fecha de Termino</th>
                             <th style="width: 120px;">Estado de la Reserva</th> 
+                            <th style="width: 120px;">Ver Mascota</th> 
                             <th style="width: 120px;">Respuesta</th> 
                                                        
                         </tr>
@@ -63,7 +64,15 @@ $duenioList = $unDuenio->getAll();
                                     <td><?php echo $reserva->getDniDuenio() ?></td>
                                     <td><?php echo $reserva->getFechaInicio() ?></td>
                                     <td><?php echo $reserva->getFechaFinal() ?></td>
-                                    <td><?php echo $reserva->getEstadoDescripcion() ?></td>                            
+                                    <td><?php echo $reserva->getEstadoDescripcion() ?></td>   
+
+                                    <form action="..\Mascota/Profile" method="post">
+                                     <td>                                        
+                                        <input type="hidden" name="idMascota" value="<?php echo $reserva->getIdMascota() ?>">
+                                        <button type="submit" class="btn" name="id" value="">X</button>                                        
+                                      </td>
+                                    </form>
+
                                     <form action="..\Reserva/Update" method="post">
                                      <td>                                        
                                         <input type="hidden" name="id" value="<?php echo $reserva->getId() ?>">

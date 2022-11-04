@@ -2,7 +2,7 @@
     namespace DAO;
     use Model\Resenia as Resenia;
 
-    class ReservaDAO
+    class ReseniaDAO
     {
       private $list = array();
       private $filename;
@@ -31,7 +31,8 @@
         return null;
       }
 
-      public function getAllByDuenio($dniDuenio) //! chequear esta funcion
+   
+      public function getAllByDuenio($dniDuenio) 
       {
         $this->loadData();
 
@@ -44,7 +45,7 @@
         return $listByDniDuenio;
       }
 
-      public function getAllByGuardian($cuilGuardian) //! chequear esta funcion
+      public function getAllByGuardian($cuilGuardian) 
       {
         $this->loadData();
 
@@ -55,6 +56,28 @@
         }
 
         return $listByCuilGuardian;
+      }
+
+
+      public function getPromedio($cuilGuardian){
+
+        $list = $this->getAllByGuardian($cuilGuardian);
+        $promedio = 0;
+        $total = 0;
+        $contador = 0;
+        foreach($list as $item){
+          $total += $item->getPuntaje();
+          $contador++;
+        }
+        if($contador > 0){
+          $promedio = $total/$contador;
+        }
+        else{
+          $promedio = 0;
+        }
+          
+
+        return $promedio;
       }
       
       public function getByIdReserva($idReserva) 
@@ -94,16 +117,16 @@
         return false;
       }
       
+
       public function Add(Resenia $resenia)
       {
         $this->LoadData();
         $this->maxId++;
         $resenia->setId($this->maxId);
-
         array_push($this->list, $resenia);
-
         $this->SaveData();  
       }
+  
 
       private function SaveData()
       {
@@ -114,6 +137,21 @@
         $json = json_encode($toEncode, JSON_PRETTY_PRINT);
         file_put_contents($this->filename, $json);
       }
+
+
+      public function Delete($id)
+      {
+        $this->loadData();
+        foreach ($this->list as $index => $item) {
+          if ($item->getId() == $id) {
+            unset($this->list[$index]);
+            $this->SaveData();
+            return true;
+          }
+        }
+        return false;
+      }
+
 
       private function LoadData() 
       {
@@ -129,6 +167,8 @@
           {
             $resenia = new Resenia();
             
+            $resenia->setDniDuenio($item["dniDuenio"]);
+            $resenia->setCuilGuardian($item["cuilGuardian"]);
             $resenia->setIdReserva($item["idReserva"]);
             $resenia->setId($item["id"]);
             $resenia->setPuntaje($item["puntaje"]);
@@ -143,4 +183,3 @@
         }
       }
     }
-?>

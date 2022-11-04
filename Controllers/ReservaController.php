@@ -17,10 +17,8 @@ class ReservaController
           $reserva->setDniDuenio($dniDuenio);
           $reserva->setCuilGuardian($cuilGuardian);
           $reserva->setIdMascota($idMascota);
-          //$reserva->setId($id);
           $reserva->setFechaInicio($fechaInicio);
           $reserva->setFechaFinal($fechaFinal);
-          // $reserva->setHorario($horario);
           $reserva->setEstado('S');   //TODO Solicitada
 
           $reservaDao = new ReservaDAO();
@@ -120,15 +118,13 @@ class ReservaController
         if ($estado != '') {
           $reservaDao = new ReservaDAO();
           $reservaDao->UpdateEstado($id, $estado);
-          //$this->List('El registro fue actualizado');
+
           header("location: ../Views/reserva-list-Guardian.php");
         }
       } else {
-        //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\reserva-list.php');
         header("location: ../Views/duenio-home.php");
       }
     } else {
-      //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
       header("location: ../Views/login.php");
     }
   }

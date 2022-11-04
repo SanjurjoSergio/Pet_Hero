@@ -11,17 +11,22 @@
           <ul>
             <?php
              if($_SESSION['tipo'] == 'D') { ?>
-            <li><a href="../Mascota/Add">AGREGAR MASCOTA</a></li>                                  
-            <li><a href="../Mascota/List">LISTADO DE MIS MASCOTAS</a></li>
+            <li><a href="../Home/Index">HOME</a></li>  
+            <li><a href="../Mascota/List">LISTADO DE MIS MASCOTAS</a></li>   
+            <li><a href="../Mascota/Add">AGREGAR MASCOTA</a></li>                    
             <li><a href="../Reserva/List">VER MIS RESERVAS</a></li>
             <li><a href="../Reserva/ListHistorial">HISTORIAL DE RESERVAS</a></li>
+            <li><a href="../Resenia/List">HISTORIAL DE RESEÑAS</a></li>
+
+
                        
             <?php }else if($_SESSION['tipo'] == 'G') { ?>
-            <li><a href="../Resenia/List">VER MIS RESEÑAS</a></li>
-            <li><a href="../Guardian/UpdateDisponibilidad">ACTUALIZAR DISPONIBILIDAD</a></li>
-            <li><a href="../Reserva/List">VER RESERVACIONES</a></li>
-            <li><a href="../Reserva/ListPendientes">RESERVAS PENDIENTES</a></li>
+            <li><a href="../Home/Index">HOME</a></li>
+            <li><a href="../Reserva/ListPendientes">VER RESERVACIONES</a></li>
+            <li><a href="../Reserva/List">RESERVAS PENDIENTES</a></li>
             <li><a href="../Reserva/ListHistorial">HISTORIAL DE RESERVAS</a></li>
+            <li><a href="../Resenia/List">VER RESEÑAS</a></li>
+            <li><a href="../Guardian/UpdateDisponibilidad">ACTUALIZAR DISPONIBILIDAD</a></li>
             <?php } ?>
             
             <li><a href="../Auth/Logout">LOGOUT</a></li>
