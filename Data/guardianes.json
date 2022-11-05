@@ -24,7 +24,9 @@
         "cuil": "44-44444444-4",
         "disponibilidad": [
             "martes",
-            "miercoles"
+            "miercoles",
+            "jueves",
+            "viernes"
         ],
         "tamanioMascota": [
             "chico",

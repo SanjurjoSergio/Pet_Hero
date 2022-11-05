@@ -1,5 +1,7 @@
 <?php
+
 namespace Views;
+
 session_start();
 include_once('header.php');
 include_once('nav-bar.php');
@@ -8,26 +10,22 @@ include_once('nav-bar.php');
 require_once("../DAO/ReservaDAO.php");
 require_once("../Model/Reserva.php");
 require_once("../Controllers/ReservaController.php");
-Use DAO\ReservaDAO as ReservaDAO;
-Use Model\Reserva as Reserva;
+
+use DAO\ReservaDAO as ReservaDAO;
+use Model\Reserva as Reserva;
+
 $unaReserva = new ReservaDAO();
 $reservaList = $unaReserva->getAllByDniDuenio($_SESSION['dni']);
 
-require_once("../DAO/MascotaDAO.php");
-require_once("../Model/Mascota.php");
-require_once("../Controllers/MascotaController.php");
-Use DAO\MascotaDAO as MascotaDAO;
-Use Model\Mascota as Mascota;
-$unamascota = new MascotaDAO();
-$mascotaList = $unamascota->getAllByDuenio($_SESSION['dni']);
+require_once("../DAO/PagoDAO.php");
+require_once("../Model/Pago.php");
+require_once("../Controllers/PagoController.php");
 
-require_once("../DAO/GuardianDAO.php");
-require_once("../Model/Guardian.php");
-require_once("../Controllers/GuardianController.php");
-use DAO\GuardianDAO as GuardianDAO;
-use Model\Guardian as Guardian;
-$unGuardian = new GuardianDAO();
-$guardianList = $unGuardian->getAll();
+use DAO\PagoDAO as PagoDAO;
+use Model\Pago as Pago;
+
+$unPago = new PagoDAO();
+
 
 
 ?>
@@ -48,36 +46,64 @@ $guardianList = $unGuardian->getAll();
                             <th style="width: 150px;">Guardian</th>
                             <th style="width: 150px;">Fecha de Inicio</th>
                             <th style="width: 150px;">Fecha de Termino</th>
-                            <th style="width: 120px;">Estado de la Reserva</th> 
-                            <th style="width: 120px;">Cancelar Reserva</th> 
-                                                       
+                            <th style="width: 120px;">Estado de la Reserva</th>
+                            <th style="width: 120px;">Cancelar Reserva</th>
+                            <th style="width: 120px;">Pagar Adelanto</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php                                              
+                        <?php
                         foreach ($reservaList as $reserva) {
-                            if($reserva->getFechaFinal() >= date('Y-m-d')) {
+                            if ($reserva->getFechaFinal() >= date('Y-m-d') && $reserva->getEstado() != 'R') {
                         ?>
                                 <tr>
                                     <td><?php echo $reserva->getIdMascota() ?></td>
                                     <td><?php echo $reserva->getCuilGuardian() ?></td>
                                     <td><?php echo $reserva->getFechaInicio() ?></td>
                                     <td><?php echo $reserva->getFechaFinal() ?></td>
-                                    <td><?php echo $reserva->getEstadoDescripcion() ?></td>                            
-                                    <form action="..\Reserva/Delete" method="post">
-                                     <td>                                        
-                                        <input type="hidden" name="id" value="<?php echo $reserva->getId() ?>">
-                                        <button type="submit" class="btn" value="">X</button>
-                                      </td>
-                                    </form>
-                                </tr>
-                        <?php
-                            }
-                        }
-                        ?>
+                                    <td><?php echo $reserva->getEstadoDescripcion() ?></td>
+
+                                   <td>                                   
+                                   <?php if ($reserva->getEstado() == 'S' || $reserva->getEstado() == 'A') {
+                                            if ($unPago->getById($reserva->getId()) == null) { ?>
+                                            <form action="..\Reserva/Delete" method="post">                                                
+                                                    <input type="hidden" name="id" value="<?php echo $reserva->getId() ?>">
+                                                    <button type="submit" class="btn" value="">X</button>                                                
+                                            </form>
+                                            <?php } else { 
+                                                        echo " -- - -- ";
+                                                ?>
+                                            <?php }
+                                        } else {
+                                                echo " --- ";
+                                                }?>
+                                    </td>
+
+                                    <td>
+                                    <?php 
+                                                $pagoLocal = new Pago();
+                                                $pagoLocal = $unPago->getById($reserva->getId());
+                                                if ($reserva->getEstado() == 'A' && $pagoLocal == null) { ?>
+                                                <form action="..\Pago/SetPago" method="post">                                            
+                                                    <input type="hidden" name="idPago" value="<?php echo $reserva->getId() ?>">
+                                                    <input type="hidden" name="cuilGuardian" value="<?php echo $reserva->getCuilGuardian() ?>">
+                                                    <button type="submit" class="btn" value="">X</button>                                            
+                                                </form>
+                                        <?php } else if ($reserva->getEstado() == 'A' || $reserva->getEstado() == 'P') {
+                                                    if ($pagoLocal) {
+                                                        echo "Pagado";                      
+                                                    }
+                                                } else {
+                                                        echo " ---- ";
+                                                }
+                                            }
+                                        }
+                                            ?>
+                                            </td>
+                                            </tr>
                     </tbody>
                 </table>
-               
+
             </div>
         </div>
         <!-- / main body -->

@@ -14,10 +14,7 @@ include_once('nav-bar.php');
         <!-- main body -->
         
         
-        <button onclick="location = '../Mascota/List' ">Mis Mascotas</button>
-        <button onclick="location = '../Reserva/List' ">Reservas Pendientes</button>
-        <button onclick="location = '../Reserva/List' ">Historial de Reservas</button>
-        
+      
 
 
         <!-- / main body -->

@@ -64,7 +64,8 @@
         public function Logout()
         {
           session_destroy();
-          require_once("C:\\xampp\htdocs\Practicos\Pet_Hero\Views\login.php");
+          //require_once("C:\\xampp\htdocs\Practicos\Pet_Hero\Views\login.php");
+          header("location: ../Views/login.php");
         }
     }
 ?>

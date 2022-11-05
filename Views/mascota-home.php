@@ -40,6 +40,7 @@ $mascota = $unamascota->getById($_SESSION['idMascota']);
                             <th style="width: 120px;">Imagen</th>
                             <th style="width: 120px;">Video</th>
                             <th style="width: 120px;">Libreta</th>
+                            <th style="width: 120px;"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,12 +54,22 @@ $mascota = $unamascota->getById($_SESSION['idMascota']);
                             <td><?php echo $mascota->getImagen() ?></td>
                             <td><?php echo $mascota->getVideo() ?></td>
                             <td><?php echo $mascota->getLibreta() ?></td>
-                            <form action="..\Guardian/ListByTamanio" method="post">
-                                <td>
-                                    <input type="hidden" name="tamanio" value="<?php echo $mascota->getTamanio() ?>">
-                                    <button type="submit" class="btn" value="">Buscar Guardian</button>
-                                </td>
-                            </form>
+
+                            <?php if ($_SESSION['tipo'] == 'D') { ?>
+                                <form action="..\Guardian/ListByTamanio" method="post">
+                                    <td>
+                                        <input type="hidden" name="tamanio" value="<?php echo $mascota->getTamanio() ?>">
+                                        <button type="submit" class="btn" value="">Buscar Guardian</button>
+                                    </td>
+                                </form>
+                            <?php
+                            }else if($_SESSION['tipo'] == 'G'){ ?>
+                                    <td>
+                                    <a href="./reserva-list-Guardian.php" class="btn btn-success">Volver</a>
+                                    </td>
+                            <?php
+                            }
+                            ?>
                         </tr>
 
                     </tbody>

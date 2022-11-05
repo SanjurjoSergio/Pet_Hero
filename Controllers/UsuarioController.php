@@ -16,7 +16,6 @@ class UsuarioController
                 echo "<script> if(confirm('Usuario en uso'));";                         //! mensaje de validacion
                 echo "window.location = '../Views/usuario-add.php'; </script>";         //! cambia por el header
                // header("location: ../Views/usuario-add.php");
-                                
 
             } else {
                 $nuevoUsuario = new Usuario();

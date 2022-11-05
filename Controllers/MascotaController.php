@@ -1,4 +1,5 @@
 <?php
+
 namespace Controllers;
 
 use Model\Mascota as Mascota;
@@ -8,12 +9,12 @@ class MascotaController
 {
   public function Add($id = '', $nombre = '', $familia = '', $raza = '', $tamanio = '', $observaciones = '', $imagen = '', $video = '', $libreta = '')
   {
-    if (isset($_SESSION['usuario'])) {   
+    if (isset($_SESSION['usuario'])) {
       if ($_SESSION['tipo'] == 'D') {
         if ($id != '' || $nombre != '' || $familia != '' || $raza != '' || $tamanio != '' || $observaciones != '' || $imagen != '' || $video != '' || $libreta != '') {
           $mascota = new Mascota();
 
-          
+
           $mascota->setDniDuenio($_SESSION['dni']);
           $mascota->setId($id);
           $mascota->setNombre($nombre);
@@ -65,22 +66,13 @@ class MascotaController
   {
     if (isset($_SESSION['usuario'])) {
       $mascotaDao = new MascotaDAO();
-      
-      if ($_SESSION['tipo'] == 'D') {
-        $_SESSION['idMascota'] = $id;
-        //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\mascota-list.php');
-        header("location: ../Views/mascota-home.php");
-      } else {
-        session_destroy();
-        header("location: ../Views/login.php");
-      }
+      $_SESSION['idMascota'] = $id;
+      //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\mascota-list.php');
+      header("location: ../Views/mascota-home.php");
     } else
       //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
       header("location: ../Views/login.php");
   }
-
-
-
 
 
   public function UpdateObservaciones($id, $observaciones = '')

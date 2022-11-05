@@ -4,7 +4,7 @@
 
     class MascotaDAO
     {
-      private $list = array();
+      private $list = array();    //! agregar el m ax id y modificar resto
       private $filename;
 
       public function __construct()
@@ -18,7 +18,7 @@
         return $this->list;
       }
 
-      public function getById($id)        //!ver esto despues
+      public function getById($id)       
       {
         $this->loadData();
         foreach($this->list as $item) 
@@ -29,7 +29,7 @@
         return null;
       }
 
-      public function getAllByDuenio($dniDuenio) //! chequear esta funcion
+      public function getAllByDuenio($dniDuenio) 
       {
         $this->loadData();
 

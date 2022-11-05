@@ -13,7 +13,6 @@ class Reserva
     private $id;
     private $fechaInicio;
     private $fechaFinal;
-    private $horario;               //! esto esta al pedo?
     private $estado;                //TODO   'Solicitada'(S) 'Aceptada'(A) 'Rechazada'(R) 'En progreso'(P); 'Finalizada'(F)
 
 
@@ -82,17 +81,6 @@ class Reserva
         return $this;
     }
 
-    public function getHorario()
-    {
-        return $this->horario;
-    }
-
-    public function setHorario($horario): self
-    {
-        $this->horario = $horario;
-        return $this;
-    }
-
     public function getEstado()
     {
         return $this->estado;
@@ -134,8 +122,7 @@ class Reserva
         $me["idMascota"] = $this->idMascota;
         $me["id"] = $this->id;
         $me["fechaInicio"] = $this->fechaInicio;
-        $me["fechaFinal"] = $this->fechaFinal;
-        $me["horario"] = $this->horario;
+        $me["fechaFinal"] = $this->fechaFinal;      
         $me["estado"] = $this->estado;
         return $me;
     }

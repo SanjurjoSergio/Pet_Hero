@@ -12,22 +12,32 @@ class ReservaController
     if (isset($_SESSION['usuario']))
       if ($_SESSION['tipo'] == 'D') {
         if ($dniDuenio != '' || $cuilGuardian != '' || $idMascota != '' || $fechaInicio != '' || $fechaFinal != '') {
-          $reserva = new Reserva();
+          if ($fechaInicio > date('Y-m-d')  && $fechaFinal > $fechaInicio) { //TODO chequea fechas 
+            $reservaDao = new ReservaDAO();
 
-          $reserva->setDniDuenio($dniDuenio);
-          $reserva->setCuilGuardian($cuilGuardian);
-          $reserva->setIdMascota($idMascota);
-          //$reserva->setId($id);
-          $reserva->setFechaInicio($fechaInicio);
-          $reserva->setFechaFinal($fechaFinal);
-          // $reserva->setHorario($horario);
-          $reserva->setEstado('S');   //TODO Solicitada
+            if ($reservaDao->chequearFechas($cuilGuardian, $fechaInicio, $fechaFinal, $idMascota)) {
 
-          $reservaDao = new ReservaDAO();
-          $reservaDao->Add($reserva);
+              $reserva = new Reserva();
 
-          header("location: ../Views/reserva-list-Duenio.php");
-          //$this->List();            
+              $reserva->setDniDuenio($dniDuenio);
+              $reserva->setCuilGuardian($cuilGuardian);
+              $reserva->setIdMascota($idMascota);
+              $reserva->setFechaInicio($fechaInicio);
+              $reserva->setFechaFinal($fechaFinal);
+              $reserva->setEstado('S');   //TODO Solicitada
+
+
+              $reservaDao->Add($reserva);
+
+              header("location: ../Views/reserva-list-Duenio.php");
+            } else {
+              echo "<script> if(confirm('El Guardian Solicitado no se encuentra disponible en esas fechas'));";  //! mensaje de validacion fecha
+              echo "window.location = '../Views/guardian-list.php'; </script>";
+            }
+          } else {
+            echo "<script> if(confirm('Error en las fechas, chequee que el inicio sea superior a hoy y que el final sea superior al inicio'));";  //! mensaje de validacion fecha
+            echo "window.location = '../Views/reserva-add.php'; </script>";                                                                       //! cambia por el header
+          }
         } else {
           header("location: ../Views/reserva-add.php");
           //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\reserva-add.php');
@@ -120,15 +130,13 @@ class ReservaController
         if ($estado != '') {
           $reservaDao = new ReservaDAO();
           $reservaDao->UpdateEstado($id, $estado);
-          //$this->List('El registro fue actualizado');
+
           header("location: ../Views/reserva-list-Guardian.php");
         }
       } else {
-        //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\reserva-list.php');
         header("location: ../Views/duenio-home.php");
       }
     } else {
-      //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
       header("location: ../Views/login.php");
     }
   }
