@@ -2,6 +2,7 @@
 session_start();
 include_once('header.php');
 include_once('nav-bar.php');
+
 ?>
 
 <div id="breadcrumb" class="hoc clear">
@@ -20,11 +21,13 @@ include_once('nav-bar.php');
                             <tr>
                                 <th>Id</th>
                                 <th>Nombre</th>
+                                <th>Familia</th>
                                 <th>Raza</th>
                                 <th>Tamaño</th>
                                 <th>Observaciones</th>
                                 <th>Imagen</th>
                                 <th>Video</th>
+                                <th>Libreta</th>
                             </tr>
                         </thead>
                         <tbody align="center">
@@ -35,22 +38,63 @@ include_once('nav-bar.php');
                                 <td>
                                     <input type="text" name="nombre" size="22" required>
                                 </td>
+
                                 <td>
-                                    <input type="text" name="raza" size="22" required>
+                                    <input type="radio" id="input1" value="felino" name="familia" class="inputs" required>
+                                    <label for="felino">Felino</label>
+                                    <input type="radio" id="input2" value="canino" name="familia" class="inputs">
+                                    <label for="canino">Canino</label>
                                 </td>
+
+                                <td>
+                                    <select name="raza" id="select1" style="display: none" required>                                        
+                                        <option value="pelo corto americano">Pelo corto americano</option>
+                                        <option value="azul ruso">Azul ruso</option>
+                                        <option value="bombay">Bombay(gato negro)</option>
+                                        <option value="maine coon">Maine Coon</option>
+                                        <option value="sphynx">Sphynx</option>
+                                        <option value="munchkin">Munchkin</option>
+                                        <option value="persa">Persa</option>
+                                        <option value="siames">Siames</option>
+                                    </select>
+
+                                    <select name="raza" id="select2" style="display: none">
+                                        <option value="" disabled selected>Raza</option>
+                                        <option value="akita">Akita</option>
+                                        <option value="bull dog">Bull Dog</option>
+                                        <option value="pitbull">Pitbull</option>
+                                        <option value="pastor aleman">Pastor aleman</option>
+                                        <option value="doberman">Doberman</option>
+                                        <option value="dogo argentino">Dogo argentino </option>
+                                        <option value="golden retriever">Golden retriever</option>
+                                    </select>
+
+                                </td>
+
                                 <td>
                                     <select name="tamanio" required>
                                         <option value="chico">Chico</option>
                                         <option value="mediano">Mediano</option>
-                                        <option value="grande">Grande</option>                                        
+                                        <option value="grande">Grande</option>
                                     </select>
                                 </td>
+
                                 <td>
                                     <textarea name="observaciones" cols="60" rows="1"></textarea>
                                 </td>
-                                <td><input type="text" name="imagen"  style="max-width: 120px" required></td>  //!imagen
-                                <td><input type= "text" name="video"  style="max-width: 120px" ></td>           //!video
+
+                                <td><input type="text" name="imagen" style="max-width: 120px" required></td>
+
+                                <td><input type="text" name="video" style="max-width: 120px"></td>
+
+                                <td><input type="text" name="libreta" style="max-width: 120px" required placeholder="Libreta Sanitaria"></td>
+
                             </tr>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+                             <script src="./layout/scripts/scripts.js"></script>
+
+                                
+
                         </tbody>
                     </table>
                     <div>
@@ -59,11 +103,11 @@ include_once('nav-bar.php');
                 </form>
             </div>
         </div>
+  
         <!-- / main body -->
         <div class="clear"></div>
     </main>
 </div>
-
 
 <?php
 include_once('footer.php');

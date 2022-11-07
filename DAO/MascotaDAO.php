@@ -4,7 +4,7 @@
 
     class MascotaDAO
     {
-      private $list = array();
+      private $list = array();    //! agregar el m ax id y modificar resto
       private $filename;
 
       public function __construct()
@@ -18,7 +18,7 @@
         return $this->list;
       }
 
-      public function getById($id)        //!ver esto despues
+      public function getById($id)       
       {
         $this->loadData();
         foreach($this->list as $item) 
@@ -29,7 +29,7 @@
         return null;
       }
 
-      public function getAllByDuenio($dniDuenio) //! chequear esta funcion
+      public function getAllByDuenio($dniDuenio) 
       {
         $this->loadData();
 
@@ -90,11 +90,13 @@
             $valuesArray["dniDuenio"] = $mascota->getDniDuenio();
             $valuesArray["id"] = $mascota->getId();
             $valuesArray["nombre"] = $mascota->getNombre();
+            $valuesArray["familia"] = $mascota->getFamilia();
             $valuesArray["raza"] = $mascota->getRaza();
             $valuesArray["tamanio"] = $mascota->getTamanio();
             $valuesArray["observaciones"] = $mascota->getObservaciones();
             $valuesArray["imagen"] = $mascota->getImagen();
             $valuesArray["video"] = $mascota->getVideo();
+            $valuesArray["libreta"] = $mascota->getLibreta();
 
               array_push($arrayToEncode, $valuesArray);
           }
@@ -121,11 +123,13 @@
             $mascota->setDniDuenio($item["dniDuenio"]);
             $mascota->setId($item["id"]);
             $mascota->setNombre($item["nombre"]);
+            $mascota->setFamilia($item["familia"]);
             $mascota->setRaza($item["raza"]);
             $mascota->setTamanio($item["tamanio"]);
             $mascota->setObservaciones($item["observaciones"]);
             $mascota->setImagen($item["imagen"]);
             $mascota->setVideo($item["video"]);
+            $mascota->setLibreta($item["libreta"]);
            
             array_push($this->list, $mascota);
           }

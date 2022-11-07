@@ -11,11 +11,11 @@
         <form action="../Auth/Login" method="POST" class="login-form bg-dark-alpha p-5 text-white">
           <div class="form-group">
             <label for="">Usuario</label>
-            <input type="text" name="usuario" class="form-control form-control-lg" placeholder="Ingresar usuario" >
+            <input type="email" name="usuario" class="form-control form-control-lg" placeholder="eMail" >
           </div>
           <div class="form-group">
             <label for="">Contraseña</label>
-            <input type="password" name="contrasenia" class="form-control form-control-lg" placeholder="Ingresar constraseña" >
+            <input type="password" name="contrasenia" class="form-control form-control-lg" placeholder="Constraseña" >
           </div>
           <br/>
           <button class="btn btn-dark btn-block btn-lg" type=""><a href="usuario-add.php">Registrarse </a></button>

@@ -13,12 +13,8 @@ include_once('nav-bar.php');
     <main class="container" style="width: 95%;">
         <!-- main body -->
         
-        <?php var_dump($_SESSION);  ?>      //! no existe session aca
-        <button onclick="location = '../Mascota/List' ">Mis Mascotas</button>
-        <button onclick="location = '../Guardian/List' ">Guardianes</button>
-        <button onclick="location = '../Reserva/List' ">Reservas Pendientes</button>
-        <button onclick="location = '../Reserva/List' ">Historial de Reservas</button>
         
+      
 
 
         <!-- / main body -->

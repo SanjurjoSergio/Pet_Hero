@@ -7,12 +7,20 @@
         public function Index()
         {
             if(isset($_SESSION['usuario'])) {
-                $controller = new ReservaController();  //! aca van las landing dependiendo del user
-                $controller->List();
+                if($_SESSION['tipo'] == 'D'){
+                    header("location: ../Views/duenio-home.php");
+                }
+                else if($_SESSION['tipo'] == 'G'){
+                    header("location: ../Views/guardian-home.php");
+                }
+                else{
+                    header("location: ../Views/login.php");
+                }
             }
-            else               
-               require_once(ROOT . "Views/login.php");
-             // header("location:" . "Auth/Login" );
+            else{
+                header("location: ../Views/login.php");
+            }               
+             
         }
     }
 ?>

@@ -1,62 +1,98 @@
 [
     {
-        "dniDuenio": "11111111",
-        "id": "22",
+        "dniDuenio": "11-111111",
+        "id": "1101",
         "nombre": "pipo",
+        "familia": "conejo",
         "raza": "conejo",
         "tamanio": "chico",
         "observaciones": "otro conejo",
         "imagen": "no hay",
-        "video": "no quiere"
+        "video": "no quiere",
+        "libreta": "no tiene"
     },
     {
-        "dniDuenio": "11111111",
-        "id": "33",
+        "dniDuenio": "11-111111",
+        "id": "1102",
         "nombre": "pipa",
+        "familia": "conejo",
         "raza": "conejo",
         "tamanio": "mediano",
         "observaciones": "no es un conejo",
         "imagen": "si",
-        "video": "sisis"
+        "video": "sisis",
+        "libreta": "no tiene"
     },
     {
-        "dniDuenio": "11111111",
-        "id": "11",
+        "dniDuenio": "11-111111",
+        "id": "1103",
         "nombre": "pepo",
+        "familia": "conejo",
         "raza": "conejo",
-        "tamanio": "mediano",
+        "tamanio": "grande",
         "observaciones": "dale que va",
         "imagen": "conejo",
-        "video": "rabit"
+        "video": "rabit",
+        "libreta": "no tiene"
     },
     {
-        "dniDuenio": "11111111",
-        "id": "44",
+        "dniDuenio": "11-111111",
+        "id": "1104",
         "nombre": "pupa",
+        "familia": "conejo",
         "raza": "conejo",
         "tamanio": "mediano",
         "observaciones": "ultimo conejo",
         "imagen": "es un conejo",
-        "video": "rabit re"
+        "video": "rabit re",
+        "libreta": "no tiene"
     },
     {
         "dniDuenio": "33-333333",
-        "id": "111",
+        "id": "1105",
         "nombre": "trejo",
+        "familia": "equino",
         "raza": "caballo",
         "tamanio": "grande",
         "observaciones": "un caballo",
         "imagen": "es un caballo",
-        "video": "horse"
+        "video": "horse",
+        "libreta": "no tiene"
     },
     {
-        "dniDuenio": "11111111",
-        "id": "66",
-        "nombre": "pupu",
-        "raza": "conejo",
+        "dniDuenio": "33-333333",
+        "id": "1106",
+        "nombre": "lala",
+        "familia": "roedor",
+        "raza": "huron",
         "tamanio": "chico",
-        "observaciones": "que se yo",
-        "imagen": "video",
-        "video": "imagen"
+        "observaciones": "es un huron",
+        "imagen": "el huron",
+        "video": "re huron",
+        "libreta": "no tiene"
+    },
+    {
+        "dniDuenio": "11-111111",
+        "id": "1108",
+        "nombre": "Gato",
+        "familia": "felino",
+        "raza": "sphynx",
+        "tamanio": "mediano",
+        "observaciones": "pelao",
+        "imagen": "foto",
+        "video": "no hay",
+        "libreta": "pa que"
+    },
+    {
+        "dniDuenio": "11-111111",
+        "id": "1022",
+        "nombre": "otro pelado",
+        "familia": "felino",
+        "raza": "sphynx",
+        "tamanio": "mediano",
+        "observaciones": "optro pelado",
+        "imagen": "dfgh",
+        "video": "jdhhgfd",
+        "libreta": "ghfdgh"
     }
 ]

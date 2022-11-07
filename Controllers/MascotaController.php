@@ -1,4 +1,5 @@
 <?php
+
 namespace Controllers;
 
 use Model\Mascota as Mascota;
@@ -6,22 +7,24 @@ use DAO\MascotaDAO as MascotaDAO;
 
 class MascotaController
 {
-  public function Add($id = '', $nombre = '', $raza = '', $tamanio = '', $observaciones = '', $imagen = '', $video = '')
+  public function Add($id = '', $nombre = '', $familia = '', $raza = '', $tamanio = '', $observaciones = '', $imagen = '', $video = '', $libreta = '')
   {
-    if (isset($_SESSION['usuario'])) {   
+    if (isset($_SESSION['usuario'])) {
       if ($_SESSION['tipo'] == 'D') {
-        if ($id != '' || $nombre != '' || $raza != '' || $tamanio != '' || $observaciones != '' || $imagen != '' || $video != '') {
+        if ($id != '' || $nombre != '' || $familia != '' || $raza != '' || $tamanio != '' || $observaciones != '' || $imagen != '' || $video != '' || $libreta != '') {
           $mascota = new Mascota();
 
-          
+
           $mascota->setDniDuenio($_SESSION['dni']);
           $mascota->setId($id);
           $mascota->setNombre($nombre);
+          $mascota->setFamilia($familia);
           $mascota->setRaza($raza);
           $mascota->setTamanio($tamanio);
           $mascota->setObservaciones($observaciones);
           $mascota->setImagen($imagen);
           $mascota->setVideo($video);
+          $mascota->setLibreta($libreta);
 
           $mascotaDao = new MascotaDAO();
           $mascotaDao->Add($mascota);
@@ -41,6 +44,7 @@ class MascotaController
     }
   }
 
+
   public function List($mensaje = '')
   {
     if (isset($_SESSION['usuario'])) {
@@ -58,6 +62,19 @@ class MascotaController
       //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
       header("location: ../Views/login.php");
   }
+
+  public function Profile($id)
+  {
+    if (isset($_SESSION['usuario'])) {
+      $mascotaDao = new MascotaDAO();
+      $_SESSION['idMascota'] = $id;
+      //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\mascota-list.php');
+      header("location: ../Views/mascota-home.php");
+    } else
+      //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
+      header("location: ../Views/login.php");
+  }
+
 
   public function UpdateObservaciones($id, $observaciones = '')
   {
@@ -133,7 +150,8 @@ class MascotaController
         $mascotaDao->Delete($id, $dniDuenio);
         $this->List('El registro fue eliminado');
       } else {
-        require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\mascota-list.php');
+        //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\mascota-list.php');
+        header("location: ../Views/mascota-list.php");
       }
     else
       require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');

@@ -9,12 +9,12 @@ class Reserva
 
     private $dniDuenio;
     private $cuilGuardian;
+    private $idMascota;
     private $id;
     private $fechaInicio;
     private $fechaFinal;
-    private $horario;
-    private $estado;                //TODO   'Solicitada' 'Aceptada' 'Rechazada' 'En progreso'(P); 'Finalizada'
-        
+    private $estado;                //TODO   'Solicitada'(S) 'Aceptada'(A) 'Rechazada'(R) 'En progreso'(P); 'Finalizada'(F)
+
 
 
     public function getDniDuenio()
@@ -37,6 +37,15 @@ class Reserva
         return $this;
     }
 
+    public function getIdMascota()
+    {
+        return $this->idMascota;
+    }
+    public function setIdMascota($idMascota): self
+    {
+        $this->idMascota = $idMascota;
+        return $this;
+    }
 
     public function getId()
     {
@@ -72,17 +81,6 @@ class Reserva
         return $this;
     }
 
-    public function getHorario()
-    {
-        return $this->horario;
-    }
-
-    public function setHorario($horario): self
-    {
-        $this->horario = $horario;
-        return $this;
-    }
-
     public function getEstado()
     {
         return $this->estado;
@@ -103,6 +101,7 @@ class Reserva
                 break;
             case "P":
                 $text = 'En progreso';
+                break;
             case "F":
                 $text = 'Finalizada';
                 break;
@@ -120,10 +119,10 @@ class Reserva
     {
         $me["dniDuenio"] = $this->dniDuenio;
         $me["cuilGuardian"] = $this->cuilGuardian;
+        $me["idMascota"] = $this->idMascota;
         $me["id"] = $this->id;
         $me["fechaInicio"] = $this->fechaInicio;
-        $me["fechaFinal"] = $this->fechaFinal;
-        $me["horario"] = $this->horario;
+        $me["fechaFinal"] = $this->fechaFinal;      
         $me["estado"] = $this->estado;
         return $me;
     }

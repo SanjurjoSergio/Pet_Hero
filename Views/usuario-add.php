@@ -24,10 +24,10 @@ include_once('header.php');
                         <tbody align="center">
                             <tr>
                                 <td style="max-width: 120px;">
-                                    <input type="text" name="usuario" size="30" min="0" required>
+                                    <input type="email" name="usuario" size="50" min="0" placeholder="eMail" required>
                                 </td>
                                 <td>
-                                    <input type="password" name="contrasenia" size="30" required>
+                                    <input type="password" name="contrasenia" size="30" placeholder="Constraseña" required>
                                 </td>
                                 <td>                                    
                                     <input type="radio" name="tipo" value="D" checked required> Duenio

@@ -1,35 +1,55 @@
 [
     {
-        "usuario": "dos",
+        "usuario": "dos@mail.com",
         "contrasenia": "234",
         "tipo": "G",
         "nombre": "Dos",
         "direccion": "lacalle22",
         "cuil": "22-22222222-2",
-        "disponibilidad": "tarde",
-        "tamanioMascota": "grande",
+        "disponibilidad": [
+            "lunes",
+            "viernes"
+        ],
+        "tamanioMascota": [
+            "grande"
+        ],
         "precio": "300"
     },
     {
-        "usuario": "cuatro",
+        "usuario": "cuatro@mail.com",
         "contrasenia": "456",
         "tipo": "G",
         "nombre": "cuatro",
         "direccion": "lacalle44",
         "cuil": "44-44444444-4",
-        "disponibilidad": "noche",
-        "tamanioMascota": "chico",
+        "disponibilidad": [
+            "martes",
+            "miercoles",
+            "jueves",
+            "viernes"
+        ],
+        "tamanioMascota": [
+            "chico",
+            "mediano"
+        ],
         "precio": "44"
     },
     {
-        "usuario": "seis",
+        "usuario": "seis@mail.com",
         "contrasenia": "678",
         "tipo": "G",
         "nombre": "seis",
         "direccion": "lacalle66",
         "cuil": "66-66666666-6",
-        "disponibilidad": "noche",
-        "tamanioMascota": "mediano",
+        "disponibilidad": [
+            "miercoles",
+            "sabado",
+            "domingo"
+        ],
+        "tamanioMascota": [
+            "mediano",
+            "grande"
+        ],
         "precio": "66"
     }
 ]

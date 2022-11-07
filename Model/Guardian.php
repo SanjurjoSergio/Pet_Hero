@@ -13,8 +13,8 @@ class Guardian extends Usuario
     private $nombre;
     private $direccion;
     private $cuil;
-    private $disponibilidad;        //TODO string:   maniana/tarde/noche   //o los dias ver despues
-    private $tamanioMascota;        //TODO string:   chico/mediano/grande
+    private $disponibilidad = array();       //TODO array:   lunes/martes/miercoles/jueves/viernes/sabado/domingo
+    private $tamanioMascota = array();       //TODO array:   chico/mediano/grande
     private $precio;
 
     public function getNombre()
@@ -65,13 +65,13 @@ class Guardian extends Usuario
     {
         return $this->tamanioMascota;
     }
-    
+
     public function setTamanioMascota($tamanioMascota): self
     {
         $this->tamanioMascota = $tamanioMascota;
         return $this;
     }
-
+    
     public function getPrecio()
     {
         return $this->precio;

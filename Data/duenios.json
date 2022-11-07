@@ -1,20 +1,29 @@
 [
     {
-        "usuario": "uno",
+        "usuario": "uno@mail.com",
         "contrasenia": "123",
         "tipo": "D",
         "nombre": "Uno",
-        "dni": "11111111",
-        "direccion": "Calle 1",
+        "dni": "11-111111",
+        "direccion": "lacalle11",
         "telefono": "111-111111"
     },
     {
-        "usuario": "tres",
+        "usuario": "tres@mail.com",
         "contrasenia": "345",
         "tipo": "D",
         "nombre": "tres",
         "dni": "33-333333",
         "direccion": "lacalle33",
         "telefono": "333-333333"
+    },
+    {
+        "usuario": "cinco@mail.com",
+        "contrasenia": "567",
+        "tipo": "D",
+        "nombre": "cinco",
+        "dni": "55-555555",
+        "direccion": "lacalle55",
+        "telefono": "555-555555"
     }
 ]

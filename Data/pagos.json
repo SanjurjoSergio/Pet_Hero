@@ -1,0 +1,47 @@
+[
+    {
+        "id": "8",
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "44-44444444-4",
+        "monto": "352",
+        "estado": 1,
+        "formaDePago": "efectivo",
+        "fecha": "2022-11-05"
+    },
+    {
+        "id": "1",
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "44-44444444-4",
+        "monto": "400",
+        "estado": 2,
+        "formaDePago": "efectivo",
+        "fecha": "2022-11-05"
+    },
+    {
+        "id": "4",
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "44-44444444-4",
+        "monto": "800",
+        "estado": 1,
+        "formaDePago": "efectivo",
+        "fecha": "2022-11-05"
+    },
+    {
+        "id": "5",
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "66-66666666-6",
+        "monto": "600",
+        "estado": 1,
+        "formaDePago": "debito",
+        "fecha": "2022-11-03"
+    },
+    {
+        "id": "6",
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "44-44444444-4",
+        "monto": "450",
+        "estado": 2,
+        "formaDePago": "credito",
+        "fecha": "2022-11-04"
+    }
+]

@@ -30,7 +30,7 @@
         return null;
       }
 
-      public function getByTipo($tipo) //! por las dudas
+      public function getByTipo($tipo) 
       {
         $this->LoadData();
         foreach ($this->list as $item) {

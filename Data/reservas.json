@@ -1,0 +1,74 @@
+[
+    {
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "44-44444444-4",
+        "idMascota": "1102",
+        "id": 1,
+        "fechaInicio": "2022-10-31",
+        "fechaFinal": "2022-11-02",
+        "estado": "F"
+    },
+    {
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "44-44444444-4",
+        "idMascota": "1101",
+        "id": 4,
+        "fechaInicio": "2022-09-07",
+        "fechaFinal": "2022-10-05",
+        "estado": "F"
+    },
+    {
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "66-66666666-6",
+        "idMascota": "1102",
+        "id": 5,
+        "fechaInicio": "2022-10-29",
+        "fechaFinal": "2022-11-11",
+        "estado": "P"
+    },
+    {
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "44-44444444-4",
+        "idMascota": "1108",
+        "id": 6,
+        "fechaInicio": "2022-10-29",
+        "fechaFinal": "2022-11-06",
+        "estado": "F"
+    },
+    {
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "44-44444444-4",
+        "idMascota": "1108",
+        "id": 7,
+        "fechaInicio": "2022-10-20",
+        "fechaFinal": "2022-10-25",
+        "estado": "R"
+    },
+    {
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "44-44444444-4",
+        "idMascota": "1102",
+        "id": 8,
+        "fechaInicio": "2022-11-29",
+        "fechaFinal": "2022-12-07",
+        "estado": "A"
+    },
+    {
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "44-44444444-4",
+        "idMascota": "1101",
+        "id": 9,
+        "fechaInicio": "2022-11-02",
+        "fechaFinal": "2022-11-15",
+        "estado": "R"
+    },
+    {
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "66-66666666-6",
+        "idMascota": "1108",
+        "id": 10,
+        "fechaInicio": "2022-11-15",
+        "fechaFinal": "2022-11-25",
+        "estado": "A"
+    }
+]

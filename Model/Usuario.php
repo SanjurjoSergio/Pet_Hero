@@ -5,7 +5,7 @@ use JsonSerializable;
 
 class Usuario {
 
-    private $usuario;
+    private $usuario;       //*es el email
     private $contrasenia;
     private $tipo;
 

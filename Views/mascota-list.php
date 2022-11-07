@@ -27,11 +27,9 @@ $mascotaList = $unamascota->getAll();
                         <tr>
                             <th style="width: 150px;">ID</th>
                             <th style="width: 150px;">Nombre</th>
+                            <th style="width: 150px;">Familia</th>
                             <th style="width: 150px;">Raza</th>
-                            <th style="width: 150px;">Tamanio</th>
-                            <th style="width: 150px;">Observaciones</th>
-                            <th style="width: 120px;">Imagen</th>
-                            <th style="width: 120px;">Video</th>
+                            <th style="width: 120px;">Perfil</th>                            
                         </tr>
                     </thead>
                     <tbody>
@@ -42,11 +40,14 @@ $mascotaList = $unamascota->getAll();
                                 <tr>
                                     <td><?php echo $mascota->getId() ?></td>
                                     <td><?php echo $mascota->getNombre() ?></td>
+                                    <td><?php echo $mascota->getFamilia() ?></td>
                                     <td><?php echo $mascota->getRaza() ?></td>
-                                    <td><?php echo $mascota->getTamanio() ?></td>
-                                    <td><?php echo $mascota->getObservaciones() ?></td>
-                                    <td><?php echo $mascota->getImagen() ?></td>
-                                    <td><?php echo $mascota->getVideo() ?></td>
+                                    <form action="..\Mascota/Profile" method="post">
+                                     <td>                                        
+                                        <input type="hidden" name="id" value="<?php echo $mascota->getId() ?>">
+                                        <button type="submit" class="btn" value="">Ver Perfil</button>
+                                      </td>
+                                    </form>
                                 </tr>
                         <?php
                             }

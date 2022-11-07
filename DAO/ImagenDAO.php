@@ -10,7 +10,7 @@
 
       public function __construct()
       {
-        $this->filename = dirname(__DIR__)."/Data/imagenes.json";
+        $this->filename = dirname(__DIR__)."/Data/img/imagenes.json";
       }
 
       public function GetAll()
