@@ -2,7 +2,7 @@
 namespace Model;
 
 use Model\Usuario as Usuario;
-require_once ("Usuario.php");       //! ver el autoloar despues
+require_once ("Usuario.php");       //! ver el autoload despues
 use JsonSerializable;
 
 class Duenio extends Usuario{

@@ -27,6 +27,28 @@ use Model\Pago as Pago;
 $unPago = new PagoDAO();
 
 
+require_once("../DAO/MascotaDAO.php");
+require_once("../Model/Mascota.php");
+require_once("../Controllers/MascotaController.php");
+
+use DAO\MascotaDAO as MascotaDAO;
+use Model\Mascota as Mascota;
+
+$unaMascota = new MascotaDAO();
+$mascotaLocal = new Mascota();
+
+
+require_once("../DAO/GuardianDAO.php");
+require_once("../Model/Guardian.php");
+require_once("../Controllers/GuardianController.php");
+
+use DAO\GuardianDAO as GuardianDAO;
+use Model\Guardian as Guardian;
+
+$unGuardian = new GuardianDAO();
+$guardianLocal = new Guardian();
+
+
 
 ?>
 
@@ -55,10 +77,12 @@ $unPago = new PagoDAO();
                         <?php
                         foreach ($reservaList as $reserva) {
                             if ($reserva->getFechaFinal() >= date('Y-m-d') && $reserva->getEstado() != 'R') {
+                                $mascotaLocal = $unaMascota->getById($reserva->getIdMascota());
+                                $guardianLocal = $unGuardian->getByCuil($reserva->getCuilGuardian());                               
                         ?>
                                 <tr>
-                                    <td><?php echo $reserva->getIdMascota() ?></td>
-                                    <td><?php echo $reserva->getCuilGuardian() ?></td>
+                                    <td><?php echo $mascotaLocal->getNombre() ?></td>
+                                    <td><?php echo $guardianLocal->getNombre() ?></td>
                                     <td><?php echo $reserva->getFechaInicio() ?></td>
                                     <td><?php echo $reserva->getFechaFinal() ?></td>
                                     <td><?php echo $reserva->getEstadoDescripcion() ?></td>

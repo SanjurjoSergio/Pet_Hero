@@ -1,98 +1,74 @@
 [
     {
         "dniDuenio": "11-111111",
-        "id": "1101",
+        "id": 1,
         "nombre": "pipo",
         "familia": "conejo",
         "raza": "conejo",
         "tamanio": "chico",
-        "observaciones": "otro conejo",
-        "imagen": "no hay",
-        "video": "no quiere",
-        "libreta": "no tiene"
+        "observaciones": "otro conejo"
     },
     {
         "dniDuenio": "11-111111",
-        "id": "1102",
+        "id": 2,
         "nombre": "pipa",
         "familia": "conejo",
         "raza": "conejo",
         "tamanio": "mediano",
-        "observaciones": "no es un conejo",
-        "imagen": "si",
-        "video": "sisis",
-        "libreta": "no tiene"
+        "observaciones": "no es un conejo"
     },
     {
         "dniDuenio": "11-111111",
-        "id": "1103",
+        "id": 3,
         "nombre": "pepo",
         "familia": "conejo",
         "raza": "conejo",
         "tamanio": "grande",
-        "observaciones": "dale que va",
-        "imagen": "conejo",
-        "video": "rabit",
-        "libreta": "no tiene"
+        "observaciones": "dale que va"
     },
     {
         "dniDuenio": "11-111111",
-        "id": "1104",
+        "id": 4,
         "nombre": "pupa",
         "familia": "conejo",
         "raza": "conejo",
         "tamanio": "mediano",
-        "observaciones": "ultimo conejo",
-        "imagen": "es un conejo",
-        "video": "rabit re",
-        "libreta": "no tiene"
+        "observaciones": "ultimo conejo"
     },
     {
         "dniDuenio": "33-333333",
-        "id": "1105",
+        "id": 5,
         "nombre": "trejo",
         "familia": "equino",
         "raza": "caballo",
         "tamanio": "grande",
-        "observaciones": "un caballo",
-        "imagen": "es un caballo",
-        "video": "horse",
-        "libreta": "no tiene"
+        "observaciones": "un caballo"
     },
     {
         "dniDuenio": "33-333333",
-        "id": "1106",
+        "id": 6,
         "nombre": "lala",
         "familia": "roedor",
         "raza": "huron",
         "tamanio": "chico",
-        "observaciones": "es un huron",
-        "imagen": "el huron",
-        "video": "re huron",
-        "libreta": "no tiene"
+        "observaciones": "es un huron"
     },
     {
         "dniDuenio": "11-111111",
-        "id": "1108",
+        "id": 7,
         "nombre": "Gato",
         "familia": "felino",
         "raza": "sphynx",
         "tamanio": "mediano",
-        "observaciones": "pelao",
-        "imagen": "foto",
-        "video": "no hay",
-        "libreta": "pa que"
+        "observaciones": "pelao"
     },
     {
         "dniDuenio": "11-111111",
-        "id": "1022",
-        "nombre": "otro pelado",
-        "familia": "felino",
-        "raza": "sphynx",
+        "id": 8,
+        "nombre": "Nana",
+        "familia": "canino",
+        "raza": "doberman",
         "tamanio": "mediano",
-        "observaciones": "optro pelado",
-        "imagen": "dfgh",
-        "video": "jdhhgfd",
-        "libreta": "ghfdgh"
+        "observaciones": "muerde"
     }
 ]

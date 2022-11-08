@@ -1,7 +1,7 @@
 <?php
     namespace DAO;
     use Model\Imagen as Imagen;
-   
+
 
     class ImagenDAO
     {
@@ -10,7 +10,7 @@
 
       public function __construct()
       {
-        $this->filename = dirname(__DIR__)."/Data/img/imagenes.json";
+        $this->filename = dirname(__DIR__)."/Data/imagenes.json";
       }
 
       public function GetAll()
@@ -22,12 +22,14 @@
       public function getByIdMascota($idMascota) 
       {
         $this->loadData();
-        foreach($this->list as $item) 
-        {
-          if($item->getIdMascota() == $idMascota)
-            return $item;
+
+        $listById = array();
+        foreach ($this->list as $item) {
+          if ($item->getIdMascota() == $idMascota)
+            array_push($listById, $item);
         }
-        return null;
+    
+        return $listById;
       }
 
       public function Add(Imagen $imagen)
@@ -47,9 +49,7 @@
           foreach($this->list as $imagen)
           {
             $valuesArray["idMascota"] = $imagen->getIdMascota();
-            $valuesArray["peso"] = $imagen->getPeso();
-            $valuesArray["formato"] = $imagen->getFormato();
-            $valuesArray["extension"] = $imagen->getExtension();
+            $valuesArray["tipo"] = $imagen->getTipo();
             $valuesArray["url"] = $imagen->getUrl();
 
               array_push($arrayToEncode, $valuesArray);
@@ -75,9 +75,7 @@
             $imagen = new Imagen();
             
             $imagen->setIdMascota($item["idMascota"]);
-            $imagen->setPeso($item["peso"]);
-            $imagen->setFormato($item["formato"]);
-            $imagen->setExtension($item["extension"]);
+            $imagen->setTipo($item["tipo"]);
             $imagen->setUrl($item["url"]);           
             
             array_push($this->list, $imagen);

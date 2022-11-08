@@ -7,32 +7,29 @@ use DAO\MascotaDAO as MascotaDAO;
 
 class MascotaController
 {
-  public function Add($id = '', $nombre = '', $familia = '', $raza = '', $tamanio = '', $observaciones = '', $imagen = '', $video = '', $libreta = '')
+  public function Add($nombre = '', $familia = '', $raza = '', $tamanio = '', $observaciones = '')
   {
     if (isset($_SESSION['usuario'])) {
       if ($_SESSION['tipo'] == 'D') {
-        if ($id != '' || $nombre != '' || $familia != '' || $raza != '' || $tamanio != '' || $observaciones != '' || $imagen != '' || $video != '' || $libreta != '') {
+        if ($nombre != '' || $familia != '' || $raza != '' || $tamanio != '' || $observaciones != '') {
           $mascota = new Mascota();
 
 
-          $mascota->setDniDuenio($_SESSION['dni']);
-          $mascota->setId($id);
+          $mascota->setDniDuenio($_SESSION['dni']);          
           $mascota->setNombre($nombre);
           $mascota->setFamilia($familia);
           $mascota->setRaza($raza);
           $mascota->setTamanio($tamanio);
           $mascota->setObservaciones($observaciones);
-          $mascota->setImagen($imagen);
-          $mascota->setVideo($video);
-          $mascota->setLibreta($libreta);
-
+          
           $mascotaDao = new MascotaDAO();
           $mascotaDao->Add($mascota);
+          $this->profile($mascota->getId());
 
-          $this->List();
+          header("location: ../Views/visual-foto-add.php");                   //! al ad de fotos
         } else {
           //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\mascota-add.php');
-          header("location: ../Views/mascota-add.php");
+          header("location: ../Views/mascota-add.php");                                             
         }
       } else {
         //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\mascota-list.php');
@@ -96,51 +93,6 @@ class MascotaController
     else
       require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
   }
-
-  /* //!VER LOS DAO DE VIDEO E IMAGEN Y EN BASE A ESO HACER ESTAS FUNCIONES
-        public function UpdateVideo($id, $video = '')
-        {
-            if (isset($_SESSION['usuario']))
-            if ($_SESSION['tipo'] == 'D') {
-                if ($video != '') {
-                    $mascotaDao = new MascotaDAO();
-                    $mascotaDao->UpdateVideo($id, $video);
-
-                    $this->List('El video fue actualizado');
-                } else {
-                    $mascotaDao = new MascotaDAO();
-                    $mascota = $mascotaDao->getById($id);
-                    require_once(VIEWS_PATH . 'mascota-update.php');
-                }
-            } else {
-                require_once(VIEWS_PATH . 'mascota-list.php');
-            }
-            else
-                require_once(VIEWS_PATH . 'login.php');
-        }
-
-        public function UpdateImagen($id, $imagen = '')
-        {
-            if (isset($_SESSION['usuario'])) {
-                if ($_SESSION['tipo'] == 'D') {
-                    if ($imagen != '') {
-                        $mascotaDao = new MascotaDAO();
-                        $mascotaDao->UpdateImagen($id, $imagen);
-
-                        $this->List('El video fue actualizado');
-                    } else {
-                        $mascotaDao = new MascotaDAO();
-                        $mascota = $mascotaDao->getById($id);
-                        require_once(VIEWS_PATH . 'mascota-update.php');
-                    }
-                    } else {
-                    require_once(VIEWS_PATH . 'mascota-list.php');
-                }
-            }
-            else
-                require_once(VIEWS_PATH . 'login.php');
-        }
-        */
 
   public function Delete($id, $dniDuenio)
   {

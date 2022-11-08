@@ -24,8 +24,9 @@ require_once("../Controllers/MascotaController.php");
 use DAO\MascotaDAO as MascotaDAO;
 use Model\Mascota as Mascota;
 
-$unamascota = new MascotaDAO();
-$mascotaList = $unamascota->getAllByDuenio($_SESSION['dni']);
+$unaMascota = new MascotaDAO();
+$mascotaList = $unaMascota->getAllByDuenio($_SESSION['dni']);
+$mascotaLocal = new Mascota();
 
 require_once("../DAO/GuardianDAO.php");
 require_once("../Model/Guardian.php");
@@ -36,6 +37,7 @@ use Model\Guardian as Guardian;
 
 $unGuardian = new GuardianDAO();
 $guardianList = $unGuardian->getAll();
+$guardianLocal = new Guardian();
 
 require_once("../DAO/ReseniaDAO.php");
 require_once("../Model/Resenia.php");
@@ -85,10 +87,12 @@ $unPago = new PagoDAO();
                         <?php
                         foreach ($reservaList as $reserva) {
                             if ($reserva->getFechaFinal() < date('Y-m-d') || $reserva->getEstado() == 'R') {
+                                $mascotaLocal = $unaMascota->getById($reserva->getIdMascota());
+                                $guardianLocal = $unGuardian->getByCuil($reserva->getCuilGuardian());
                         ?>
                                 <tr>
-                                    <td><?php echo $reserva->getIdMascota() ?></td>
-                                    <td><?php echo $reserva->getCuilGuardian() ?></td>
+                                    <td><?php echo $mascotaLocal->getNombre() ?></td>
+                                    <td><?php echo $guardianLocal->getNombre() ?></td>
                                     <td><?php echo $reserva->getFechaInicio() ?></td>
                                     <td><?php echo $reserva->getFechaFinal() ?></td>
                                     <td><?php echo $reserva->getEstadoDescripcion() ?></td>
@@ -100,32 +104,32 @@ $unPago = new PagoDAO();
                                                 <input type="hidden" name="cuilGuardian" value="<?php echo $reserva->getCuilGuardian() ?>">
                                                 <button type="submit" class="btn" value="">X</button>
                                             </form>
-                                        <?php } else if($reserva->getEstado() == "F" && $unaResenia->getByIdReserva($reserva->getId()) != null){ 
-                                                echo "Completa";
-                                            } else{
-                                                echo " - - - - - ";
-                                            }
-                                            ?>                                        
+                                        <?php } else if ($reserva->getEstado() == "F" && $unaResenia->getByIdReserva($reserva->getId()) != null) {
+                                            echo "Completa";
+                                        } else {
+                                            echo " - - - - - ";
+                                        }
+                                        ?>
                                     </td>
 
                                     <td>
-                                    <?php 
+                                        <?php
                                         $pagoLocal = new Pago();
                                         $pagoLocal = $unPago->getById($reserva->getId());
                                         if ($pagoLocal != null && $pagoLocal->getEstado() == 1) { ?>
 
-                                        <form action="..\Pago/CompletarPago" method="post">
-                                            <input type="hidden" name="idPago" value="<?php echo $pagoLocal->getId() ?>">
-                                            <button type="submit" class="btn" value="">X</button>
-                                        </form>
-                            <?php } else if ($pagoLocal != null && $pagoLocal->getEstado() == 2) {
+                                            <form action="..\Pago/CompletarPago" method="post">
+                                                <input type="hidden" name="idPago" value="<?php echo $pagoLocal->getId() ?>">
+                                                <button type="submit" class="btn" value="">X</button>
+                                            </form>
+                                <?php } else if ($pagoLocal != null && $pagoLocal->getEstado() == 2) {
                                             echo "Pagado";
                                         } else {
                                             echo " - - - ";
                                         }
                                     }
                                 }
-                            ?>
+                                ?>
                                     </td>
 
 

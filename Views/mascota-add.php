@@ -19,22 +19,15 @@ include_once('nav-bar.php');
                     <table>
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Familia</th>
                                 <th>Raza</th>
                                 <th>Tamaño</th>
                                 <th>Observaciones</th>
-                                <th>Imagen</th>
-                                <th>Video</th>
-                                <th>Libreta</th>
                             </tr>
                         </thead>
                         <tbody align="center">
-                            <tr>
-                                <td style="max-width: 120px;">
-                                    <input type="number" name="id" size="22" min="0" required>
-                                </td>
+                            <tr>                               
                                 <td>
                                     <input type="text" name="nombre" size="22" required>
                                 </td>
@@ -83,17 +76,9 @@ include_once('nav-bar.php');
                                     <textarea name="observaciones" cols="60" rows="1"></textarea>
                                 </td>
 
-                                <td><input type="text" name="imagen" style="max-width: 120px" required></td>
-
-                                <td><input type="text" name="video" style="max-width: 120px"></td>
-
-                                <td><input type="text" name="libreta" style="max-width: 120px" required placeholder="Libreta Sanitaria"></td>
-
                             </tr>
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
                              <script src="./layout/scripts/scripts.js"></script>
-
-                                
 
                         </tbody>
                     </table>

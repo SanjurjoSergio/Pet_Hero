@@ -9,7 +9,7 @@
 
       public function __construct()
       {
-        $this->filename = dirname(__DIR__)."/Data/video/videos.json";
+        $this->filename = dirname(__DIR__)."/Data/videos.json";
       }
 
       public function GetAll()
@@ -45,9 +45,6 @@
           foreach($this->list as $video)
           {
             $valuesArray["idMascota"] = $video->getIdMascota();
-            $valuesArray["peso"] = $video->getPeso();
-            $valuesArray["extension"] = $video->getExtension();
-            $valuesArray["duracion"] = $video->getDuracion();
             $valuesArray["url"] = $video->getUrl();
            
               array_push($arrayToEncode, $valuesArray);
@@ -72,9 +69,6 @@
             $video = new Video();
             
             $video->setIdMascota($item["idMascota"]);
-            $video->setPeso($item["peso"]);
-            $video->setExtension($item["extension"]);
-            $video->setDuracion($item["duracion"]);
             $video->setUrl($item["url"]);           
             
             array_push($this->list, $video);

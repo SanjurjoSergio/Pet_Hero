@@ -16,6 +16,39 @@ $unamascota = new MascotaDAO();
 $mascota = new Mascota();
 $mascota = $unamascota->getById($_SESSION['idMascota']);
 
+
+require_once("../DAO/ImagenDAO.php");
+require_once("../Model/Imagen.php");
+require_once("../Controllers/ImagenController.php");
+
+use DAO\ImagenDAO as ImagenDAO;
+use Model\Imagen as Imagen;
+
+$unaImagen = new ImagenDAO();
+$imagen = array();
+$imagen = $unaImagen->getByIdMascota($_SESSION['idMascota']);
+$foto = new Imagen();
+$vacunacion = new Imagen();
+foreach ($imagen as $item) {
+    if ($item->getTipo() == 1)
+        $foto = $item;
+    else
+        $vacunacion = $item;
+}
+
+
+require_once("../DAO/VideoDAO.php");
+require_once("../Model/Video.php");
+require_once("../Controllers/VideoController.php");
+
+use DAO\VideoDAO as VideoDAO;
+use Model\Video as Video;
+
+$unVideo = new VideoDAO();
+$video = new Video();
+$video = $unVideo->getByIdMascota($_SESSION['idMascota']);
+
+
 ?>
 
 <div id="breadcrumb" class="hoc clear">
@@ -37,9 +70,7 @@ $mascota = $unamascota->getById($_SESSION['idMascota']);
                             <th style="width: 150px;">Raza</th>
                             <th style="width: 150px;">Tamanio</th>
                             <th style="width: 150px;">Observaciones</th>
-                            <th style="width: 120px;">Imagen</th>
-                            <th style="width: 120px;">Video</th>
-                            <th style="width: 120px;">Libreta</th>
+
                             <th style="width: 120px;"></th>
                         </tr>
                     </thead>
@@ -51,9 +82,7 @@ $mascota = $unamascota->getById($_SESSION['idMascota']);
                             <td><?php echo $mascota->getRaza() ?></td>
                             <td><?php echo $mascota->getTamanio() ?></td>
                             <td><?php echo $mascota->getObservaciones() ?></td>
-                            <td><?php echo $mascota->getImagen() ?></td>
-                            <td><?php echo $mascota->getVideo() ?></td>
-                            <td><?php echo $mascota->getLibreta() ?></td>
+
 
                             <?php if ($_SESSION['tipo'] == 'D') { ?>
                                 <form action="..\Guardian/ListByTamanio" method="post">
@@ -63,17 +92,40 @@ $mascota = $unamascota->getById($_SESSION['idMascota']);
                                     </td>
                                 </form>
                             <?php
-                            }else if($_SESSION['tipo'] == 'G'){ ?>
-                                    <td>
+                            } else if ($_SESSION['tipo'] == 'G') { ?>
+                                <td>
                                     <a href="./reserva-list-Guardian.php" class="btn btn-success">Volver</a>
-                                    </td>
+                                </td>
                             <?php
                             }
                             ?>
                         </tr>
-
                     </tbody>
                 </table>
+
+                <div>
+                    <img src="<?php echo $foto->getUrl() ?>" width="100">
+                </div>
+                <br><br>
+                <div>
+                    <img src="<?php echo $vacunacion->getUrl() ?>" width="100">
+                </div>
+
+
+                <?php if ($video) { ?>
+                    <div>
+                        <video src="<?php echo $video->getUrl() ?>" width="700" controls ></video>
+                    </div>
+                <?php } else if ($_SESSION['tipo'] == 'D' && $video == null) { ?>
+                    <td>
+                        <a href="./visual-video-add.php" class="btn btn-success">Agregar Video</a>
+                    </td>
+                <?php } ?>
+
+                <?php var_dump($foto->getUrl());
+                var_dump($vacunacion->getUrl());
+                var_dump($video->getUrl()); ?>
+
 
             </div>
         </div>

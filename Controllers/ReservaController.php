@@ -29,7 +29,8 @@ class ReservaController
 
               $reservaDao->Add($reserva);
 
-              header("location: ../Views/reserva-list-Duenio.php");
+              echo "<script> if(confirm('Reserva Realizada con Exito'));";  
+              echo "window.location = '../Views/reserva-list-Duenio.php'; </script>";
             } else {
               echo "<script> if(confirm('El Guardian Solicitado no se encuentra disponible en esas fechas'));";  //! mensaje de validacion fecha
               echo "window.location = '../Views/guardian-list.php'; </script>";

@@ -19,7 +19,8 @@ require_once("../Controllers/MascotaController.php");
 Use DAO\MascotaDAO as MascotaDAO;
 Use Model\Mascota as Mascota;
 $unamascota = new MascotaDAO();
-$mascotaList = $unamascota->getAll();
+$mascotaLocal = new Mascota();
+
 
 require_once("../DAO/DuenioDAO.php");
 require_once("../Model/Duenio.php");
@@ -27,7 +28,8 @@ require_once("../Controllers/DuenioController.php");
 use DAO\DuenioDAO as DuenioDAO;
 use Model\Duenio as Duenio;
 $unDuenio = new DuenioDAO();
-$duenioList = $unDuenio->getAll();
+$duenioLocal = new Duenio();
+
 
 
 ?>
@@ -58,10 +60,12 @@ $duenioList = $unDuenio->getAll();
                         <?php                                              
                         foreach ($reservaList as $reserva) {
                             if($reserva->getEstado() == "S") {
+                                $mascotaLocal = $unaMascota->getById($reserva->getIdMascota());
+                                $duenioLocal = $unDuenio->getByDni($reserva->getDniDuenio());
                         ?>
                                 <tr>
-                                    <td><?php echo $reserva->getIdMascota() ?></td>
-                                    <td><?php echo $reserva->getDniDuenio() ?></td>
+                                    <td><?php echo $mascotaLocal->getNombre() ?></td>
+                                    <td><?php echo $duenioLocal->getNombre() ?></td>
                                     <td><?php echo $reserva->getFechaInicio() ?></td>
                                     <td><?php echo $reserva->getFechaFinal() ?></td>
                                     <td><?php echo $reserva->getEstadoDescripcion() ?></td>   

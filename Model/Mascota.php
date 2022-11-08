@@ -13,11 +13,7 @@ class Mascota
     private $familia;
     private $raza;
     private $tamanio;
-    private $observaciones;
-    private $imagen;
-    private $video;
-    private $libreta;
-
+    private $observaciones; 
 
 
     public function getDniDuenio()
@@ -96,37 +92,7 @@ class Mascota
         return $this;
     }
 
-    public function getImagen()
-    {
-        return $this->imagen;
-    }
 
-    public function setImagen($imagen): self
-    {
-        $this->imagen = $imagen;
-        return $this;
-    }
-
-    public function getVideo()
-    {
-        return $this->video;
-    }
-
-    public function setVideo($video): self
-    {
-        $this->video = $video;
-        return $this;
-    }
-
-    public function getLibreta()
-    {
-        return $this->libreta;
-    }
-    public function setLibreta($libreta): self
-    {
-        $this->libreta = $libreta;
-        return $this;
-    }
 
     public function toArray()
     {
@@ -137,9 +103,6 @@ class Mascota
         $me["raza"] = $this->raza;
         $me["tamanio"] = $this->tamanio;
         $me["observaciones"] = $this->observaciones;
-        $me["imagen"] = $this->imagen;
-        $me["video"] = $this->video;
-        $me["libreta"] = $this->libreta;
         return $me;
     }
 }
