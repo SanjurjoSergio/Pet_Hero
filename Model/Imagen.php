@@ -8,9 +8,7 @@ class Imagen
 {
 
     private $idMascota;
-    private $peso;
-    private $formato;
-    private $extension;
+    private $tipo;
     private $url;
 
     public function getIdMascota()
@@ -23,37 +21,13 @@ class Imagen
         return $this;
     }
 
-
-    public function getPeso()
+    public function getTipo()
     {
-        return $this->peso;
+        return $this->tipo;
     }
-
-    public function setPeso($peso): self
+    public function setTipo($tipo): self
     {
-        $this->peso = $peso;
-        return $this;
-    }
-
-    public function getFormato()
-    {
-        return $this->formato;
-    }
-
-    public function setFormato($formato): self
-    {
-        $this->formato = $formato;
-        return $this;
-    }
-
-    public function getExtension()
-    {
-        return $this->extension;
-    }
-
-    public function setExtension($extension): self
-    {
-        $this->extension = $extension;
+        $this->tipo = $tipo;
         return $this;
     }
 
@@ -72,9 +46,7 @@ class Imagen
     public function toArray()
     {
         $me["idMascota"] = $this->idMascota;
-        $me["peso"] = $this->peso;
-        $me["formato"] = $this->formato;
-        $me["extension"] = $this->extension;
+        $me['tipo'] = $this->tipo;
         $me["url"] = $this->url;
         return $me;
     }

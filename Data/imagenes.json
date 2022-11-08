@@ -1,0 +1,12 @@
+[
+    {
+        "idMascota": 8,
+        "tipo": "1",
+        "url": "..\/Data\/img\/husky.jpg"
+    },
+    {
+        "idMascota": 8,
+        "tipo": "2",
+        "url": "..\/Data\/img\/husky-siberiano.jpg"
+    }
+]

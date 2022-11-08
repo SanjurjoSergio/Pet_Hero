@@ -22,8 +22,8 @@
                        
             <?php }else if($_SESSION['tipo'] == 'G') { ?>
             <li><a href="../Home/Index">HOME</a></li>
-            <li><a href="../Reserva/ListPendientes">VER RESERVACIONES</a></li>
-            <li><a href="../Reserva/List">RESERVAS PENDIENTES</a></li>
+            <li><a href="../Reserva/ListPendientes">RESERVAS PENDIENTES</a></li>
+            <li><a href="../Reserva/List">VER RESERVACIONES</a></li>
             <li><a href="../Reserva/ListHistorial">HISTORIAL DE RESERVAS</a></li>
             <li><a href="../Resenia/List">VER RESEÑAS</a></li>
             <li><a href="../Guardian/UpdateDisponibilidad">ACTUALIZAR DISPONIBILIDAD</a></li>

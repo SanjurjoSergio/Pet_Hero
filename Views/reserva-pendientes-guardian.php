@@ -18,8 +18,8 @@ require_once("../Model/Mascota.php");
 require_once("../Controllers/MascotaController.php");
 Use DAO\MascotaDAO as MascotaDAO;
 Use Model\Mascota as Mascota;
-$unamascota = new MascotaDAO();
-$mascotaList = $unamascota->getAll();
+$unaMascota = new MascotaDAO();
+$mascotaLocal = new Mascota();
 
 require_once("../DAO/DuenioDAO.php");
 require_once("../Model/Duenio.php");
@@ -27,7 +27,15 @@ require_once("../Controllers/DuenioController.php");
 use DAO\DuenioDAO as DuenioDAO;
 use Model\Duenio as Duenio;
 $unDuenio = new DuenioDAO();
-$duenioList = $unDuenio->getAll();
+$duenioLocal = new Duenio();
+
+require_once("../DAO/PagoDAO.php");
+require_once("../Model/Pago.php");
+require_once("../Controllers/PagoController.php");
+use DAO\PagoDAO as PagoDAO;
+use Model\Pago as Pago;
+$unPago = new PagoDAO();
+$pagoLocal = new Pago();
 
 
 ?>
@@ -56,14 +64,17 @@ $duenioList = $unDuenio->getAll();
                         <?php                                              
                         foreach ($reservaList as $reserva) {
                             if($reserva->getEstado() == "A" || $reserva->getEstado() == "P") {
+                                $mascotaLocal = $unaMascota->getById($reserva->getIdMascota());
+                                $duenioLocal = $unDuenio->getByDni($reserva->getDniDuenio());
+                                $pagoLocal = $unPago->getById($reserva->getId());
                         ?>
                                 <tr>
-                                    <td><?php echo $reserva->getIdMascota() ?></td>
-                                    <td><?php echo $reserva->getDniDuenio() ?></td>
+                                    <td><?php echo $mascotaLocal->getNombre() ?></td>
+                                    <td><?php echo $duenioLocal->getNombre() ?></td>
                                     <td><?php echo $reserva->getFechaInicio() ?></td>
                                     <td><?php echo $reserva->getFechaFinal() ?></td>
                                     <td><?php echo $reserva->getEstadoDescripcion() ?></td>    
-                                    <td><?php echo "estado del pago" ?></td>               
+                                    <td><?php echo $pagoLocal->getEstadoDescripcion() ?></td>               
                                 </tr>
                         <?php
                             }

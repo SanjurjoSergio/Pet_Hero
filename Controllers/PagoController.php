@@ -25,7 +25,7 @@ class PagoController
                     $pagoDao = new pagoDAO();
                     $pagoDao->Add($pago);
 
-                    header("location: ../Views/reserva-list-Duenio.php"); 
+                    header("location: ../Views/pago-tarjeta.php");                      
                 } else {              
                     header("location: ../Views/reserva-list-Duenio.php");
                 }
@@ -60,7 +60,8 @@ class PagoController
             if ($_SESSION['tipo'] == 'D') {
                 $pagoDao = new PagoDAO();
                 $pagoDao->UpdateEstado($idPago, 2);
-                header("location: ../Views/reserva-Historial-Duenio.php");    
+                echo "<script> if(confirm('Pago Completado con Exito'));";  
+                echo "window.location = '../Views/reserva-Historial-Duenio.php'; </script>";                 
                 } else {
                 session_destroy();
                 header("location: ../Views/login.php");

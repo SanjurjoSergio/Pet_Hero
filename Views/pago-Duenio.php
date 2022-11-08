@@ -65,8 +65,7 @@ var_dump($_SESSION['cuilGuardian']);
                                     <?php echo $unPago->getMonto($_SESSION['idPago']);  ?>
                                 </td>
                                 <td>
-                                    <select name="formaDePago">
-                                        <option value="efectivo">Efectivo</option>
+                                    <select name="formaDePago">                                        
                                         <option value="debito">Debito</option>
                                         <option value="credito">Credito</option>
                                     </select>

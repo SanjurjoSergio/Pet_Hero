@@ -45,7 +45,7 @@ $reseniaList = $unaResenia->getAll();
                             <th style="width: 150px;">Direccion</th>
                             <th style="width: 150px;">Tamaño de Mascotas</th>
                             <th style="width: 150px;">Disponibilidad</th>
-                            <th style="width: 150px;">Precio</th>
+                            <th style="width: 150px;">Precio / Dia</th>
                             <th style="width: 150px;">Puntaje</th>
                             <th style="width: 150px;">Solicitar Reserva</th>
 
@@ -65,10 +65,10 @@ $reseniaList = $unaResenia->getAll();
                                     <td><?php if ($guardian->getDisponibilidad() != null) {
                                             echo implode(", ", $guardian->getDisponibilidad());
                                         } ?></td>
-                                    <td><?php echo $guardian->getPrecio() ?></td>
+                                    <td><?php echo "$ " . $guardian->getPrecio() ?></td>
 
                                     <td><?php if ($unaResenia->getPromedio($guardian->getCuil()) > 0) {
-                                            echo $unaResenia->getPromedio($guardian->getCuil());
+                                            echo $unaResenia->getPromedio($guardian->getCuil()) . "/10";
                                         } else {
                                             echo "Sin Reseñas";
                                         }
