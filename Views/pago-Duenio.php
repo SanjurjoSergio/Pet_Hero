@@ -31,9 +31,7 @@ require_once("../Controllers/GuardianController.php");
 use DAO\GuardianDAO as GuardianDAO;
 
 $unGuardian = new GuardianDAO();
-var_dump($_SESSION['idPago']);
-var_dump($_SESSION['dni']);
-var_dump($_SESSION['cuilGuardian']);
+
 ?>
 
 <div id="breadcrumb" class="hoc clear">

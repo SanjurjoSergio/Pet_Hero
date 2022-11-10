@@ -25,7 +25,7 @@ class ReseniaController
           $reseniaDao->Add($resenia);
 
           echo "<script> if(confirm('Reseña Agregada con Exito'));";  
-          echo "window.location = '../Views/resenia-Historial-Duenio.php'; </script>";   
+          echo "window.location = '../Views/resenia-list-Duenio.php'; </script>";   
         } else {
           //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\resenia-add.php');
           header("location: ../Views/resenia-add.php");

@@ -28,5 +28,15 @@
         "usuario": "seis@mail.com",
         "contrasenia": "678",
         "tipo": "G"
+    },
+    {
+        "usuario": "diez@mail.com",
+        "contrasenia": "1010",
+        "tipo": "D"
+    },
+    {
+        "usuario": "once@mail.com",
+        "contrasenia": "1111",
+        "tipo": "G"
     }
 ]

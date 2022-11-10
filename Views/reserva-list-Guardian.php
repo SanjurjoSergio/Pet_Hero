@@ -18,7 +18,7 @@ require_once("../Model/Mascota.php");
 require_once("../Controllers/MascotaController.php");
 Use DAO\MascotaDAO as MascotaDAO;
 Use Model\Mascota as Mascota;
-$unamascota = new MascotaDAO();
+$unaMascota = new MascotaDAO();
 $mascotaLocal = new Mascota();
 
 
@@ -59,7 +59,7 @@ $duenioLocal = new Duenio();
                     <tbody>
                         <?php                                              
                         foreach ($reservaList as $reserva) {
-                            if($reserva->getEstado() == "S") {
+                            if($reserva->getEstado() == "S" && $unaReserva->chequearFechas($reserva->getCuilGuardian(), $reserva->getFechaInicio(), $reserva->getFechaFinal(), $reserva->getIdMascota())) { //TODO cuando se acepta una reserva cancela las solicitadas no viables
                                 $mascotaLocal = $unaMascota->getById($reserva->getIdMascota());
                                 $duenioLocal = $unDuenio->getByDni($reserva->getDniDuenio());
                         ?>
@@ -87,6 +87,8 @@ $duenioLocal = new Duenio();
                                     </form>
                                 </tr>
                         <?php
+                            } elseif ($reserva->getEstado() == "S"){
+                                $unaReserva->UpdateEstado($reserva->getId(), "R");
                             }
                         }
                         ?>

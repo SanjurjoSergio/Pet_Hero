@@ -16,5 +16,14 @@
         "puntaje": "9",
         "fecha": "2022-11-05",
         "observaciones": "por la \u00d1 ya sabes por que"
+    },
+    {
+        "dniDuenio": "10-101010",
+        "cuilGuardian": "32-11111111-9",
+        "idReserva": "11",
+        "id": 4,
+        "puntaje": "10",
+        "fecha": "2022-11-10",
+        "observaciones": "de diez"
     }
 ]

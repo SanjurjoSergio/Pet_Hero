@@ -91,7 +91,7 @@ class ReservaDAO
     $mascotaLocal = new Mascota();
     $reservasLocal = $this->getAllByCuilGuardian($cuilGuardian);
     foreach ($reservasLocal as $item) {
-      if ($item->getEstado() == 'A' || $item->getEstado() == 'P' || $item->getEstado() == 'S') {  //! 'S' hasta hacer chequeo en guardian
+      if ($item->getEstado() == 'A' || $item->getEstado() == 'P') {  //! 'S' hasta hacer chequeo en guardian   || $item->getEstado() == 'S'
         if ($item->getFechaFinal() >= $fechaInicio && $fechaFinal >= $item->getFechaInicio()) {
           $mascotaLocal = $unaMascota->getById($item->getIdMascota());                           
           if ($mascotaLocal->getRaza() != $this->getRazaMascota($idMascota)) {

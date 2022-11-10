@@ -120,13 +120,7 @@ $video = $unVideo->getByIdMascota($_SESSION['idMascota']);
                     <td>
                         <a href="./visual-video-add.php" class="btn btn-success">Agregar Video</a>
                     </td>
-                <?php } ?>
-
-                <?php var_dump($foto->getUrl());
-                var_dump($vacunacion->getUrl());
-                var_dump($video->getUrl()); ?>
-
-
+                <?php } ?>           
             </div>
         </div>
         <!-- / main body -->

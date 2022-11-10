@@ -51,5 +51,25 @@
             "grande"
         ],
         "precio": "66"
+    },
+    {
+        "usuario": "once@mail.com",
+        "contrasenia": "1111",
+        "tipo": "G",
+        "nombre": "once",
+        "direccion": "lacalle1111",
+        "cuil": "32-11111111-9",
+        "disponibilidad": [
+            "jueves",
+            "viernes",
+            "sabado",
+            "domingo"
+        ],
+        "tamanioMascota": [
+            "chico",
+            "mediano",
+            "grande"
+        ],
+        "precio": "500"
     }
 ]

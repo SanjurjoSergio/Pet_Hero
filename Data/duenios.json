@@ -25,5 +25,14 @@
         "dni": "55-555555",
         "direccion": "lacalle55",
         "telefono": "555-555555"
+    },
+    {
+        "usuario": "diez@mail.com",
+        "contrasenia": "1010",
+        "tipo": "D",
+        "nombre": "diez",
+        "dni": "10-101010",
+        "direccion": "lacalle1010",
+        "telefono": "155-101010"
     }
 ]

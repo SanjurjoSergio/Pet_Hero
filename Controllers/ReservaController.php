@@ -12,7 +12,7 @@ class ReservaController
     if (isset($_SESSION['usuario']))
       if ($_SESSION['tipo'] == 'D') {
         if ($dniDuenio != '' || $cuilGuardian != '' || $idMascota != '' || $fechaInicio != '' || $fechaFinal != '') {
-          if ($fechaInicio > date('Y-m-d')  && $fechaFinal > $fechaInicio) { //TODO chequea fechas 
+          if ($fechaInicio > date('Y-m-d')  && $fechaFinal >= $fechaInicio) { //TODO chequea fechas 
             $reservaDao = new ReservaDAO();
 
             if ($reservaDao->chequearFechas($cuilGuardian, $fechaInicio, $fechaFinal, $idMascota)) {

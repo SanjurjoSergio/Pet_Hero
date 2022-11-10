@@ -96,8 +96,8 @@ class PagoDAO
     $reservaLocal = $unaReserva->getById($id);
     $guardianLocal = $unGuardian->getByCuil($reservaLocal->getCuilGuardian());
     $precioLocal = $guardianLocal->getPrecio();
-    $diasLocal = (date_diff(date_create($reservaLocal->getFechaInicio()), date_create($reservaLocal->getFechaFinal())))->format("%a");
-    $monto = $precioLocal * $diasLocal;
+    $diasLocal = (date_diff(date_create($reservaLocal->getFechaInicio()), date_create($reservaLocal->getFechaFinal())))->format("%a");    
+    $monto = $precioLocal * ($diasLocal + 1);
     return $monto;
   }
 

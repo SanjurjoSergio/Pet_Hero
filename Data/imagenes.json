@@ -8,5 +8,45 @@
         "idMascota": 8,
         "tipo": "2",
         "url": "..\/Data\/img\/husky-siberiano.jpg"
+    },
+    {
+        "idMascota": 9,
+        "tipo": "1",
+        "url": "..\/Data\/img\/husky.jpg"
+    },
+    {
+        "idMascota": 9,
+        "tipo": "2",
+        "url": "..\/Data\/img\/husky-siberiano.jpg"
+    },
+    {
+        "idMascota": 10,
+        "tipo": "1",
+        "url": "..\/Data\/img\/husky.jpg"
+    },
+    {
+        "idMascota": 10,
+        "tipo": "2",
+        "url": "..\/Data\/img\/husky-siberiano.jpg"
+    },
+    {
+        "idMascota": 11,
+        "tipo": "1",
+        "url": "..\/Data\/img\/husky.jpg"
+    },
+    {
+        "idMascota": 11,
+        "tipo": "2",
+        "url": "..\/Data\/img\/husky-siberiano.jpg"
+    },
+    {
+        "idMascota": 12,
+        "tipo": "1",
+        "url": "..\/Data\/img\/husky.jpg"
+    },
+    {
+        "idMascota": 12,
+        "tipo": "2",
+        "url": "..\/Data\/img\/husky-siberiano.jpg"
     }
 ]

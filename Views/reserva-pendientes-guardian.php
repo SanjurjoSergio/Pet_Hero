@@ -1,5 +1,7 @@
 <?php
+
 namespace Views;
+
 session_start();
 include_once('header.php');
 include_once('nav-bar.php');
@@ -8,32 +10,40 @@ include_once('nav-bar.php');
 require_once("../DAO/ReservaDAO.php");
 require_once("../Model/Reserva.php");
 require_once("../Controllers/ReservaController.php");
-Use DAO\ReservaDAO as ReservaDAO;
-Use Model\Reserva as Reserva;
+
+use DAO\ReservaDAO as ReservaDAO;
+use Model\Reserva as Reserva;
+
 $unaReserva = new ReservaDAO();
 $reservaList = $unaReserva->getAllByCuilGuardian($_SESSION['cuil']);
 
 require_once("../DAO/MascotaDAO.php");
 require_once("../Model/Mascota.php");
 require_once("../Controllers/MascotaController.php");
-Use DAO\MascotaDAO as MascotaDAO;
-Use Model\Mascota as Mascota;
+
+use DAO\MascotaDAO as MascotaDAO;
+use Model\Mascota as Mascota;
+
 $unaMascota = new MascotaDAO();
 $mascotaLocal = new Mascota();
 
 require_once("../DAO/DuenioDAO.php");
 require_once("../Model/Duenio.php");
 require_once("../Controllers/DuenioController.php");
+
 use DAO\DuenioDAO as DuenioDAO;
 use Model\Duenio as Duenio;
+
 $unDuenio = new DuenioDAO();
 $duenioLocal = new Duenio();
 
 require_once("../DAO/PagoDAO.php");
 require_once("../Model/Pago.php");
 require_once("../Controllers/PagoController.php");
+
 use DAO\PagoDAO as PagoDAO;
 use Model\Pago as Pago;
+
 $unPago = new PagoDAO();
 $pagoLocal = new Pago();
 
@@ -56,14 +66,14 @@ $pagoLocal = new Pago();
                             <th style="width: 150px;">Dueño</th>
                             <th style="width: 150px;">Fecha de Inicio</th>
                             <th style="width: 150px;">Fecha de Termino</th>
-                            <th style="width: 120px;">Estado de la Reserva</th> 
+                            <th style="width: 120px;">Estado de la Reserva</th>
                             <th style="width: 120px;">Estado Contable</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php                                              
+                        <?php
                         foreach ($reservaList as $reserva) {
-                            if($reserva->getEstado() == "A" || $reserva->getEstado() == "P") {
+                            if ($reserva->getEstado() == "A" || $reserva->getEstado() == "P") {
                                 $mascotaLocal = $unaMascota->getById($reserva->getIdMascota());
                                 $duenioLocal = $unDuenio->getByDni($reserva->getDniDuenio());
                                 $pagoLocal = $unPago->getById($reserva->getId());
@@ -73,8 +83,14 @@ $pagoLocal = new Pago();
                                     <td><?php echo $duenioLocal->getNombre() ?></td>
                                     <td><?php echo $reserva->getFechaInicio() ?></td>
                                     <td><?php echo $reserva->getFechaFinal() ?></td>
-                                    <td><?php echo $reserva->getEstadoDescripcion() ?></td>    
-                                    <td><?php echo $pagoLocal->getEstadoDescripcion() ?></td>               
+                                    <td><?php echo $reserva->getEstadoDescripcion() ?></td>
+                                    <td>
+                                        <?php if ($pagoLocal) {
+                                            echo $pagoLocal->getEstadoDescripcion();
+                                        } else {
+                                            echo "Pago Pendiente";
+                                        }      ?>
+                                    </td>
                                 </tr>
                         <?php
                             }
@@ -82,7 +98,7 @@ $pagoLocal = new Pago();
                         ?>
                     </tbody>
                 </table>
-               
+
             </div>
         </div>
         <!-- / main body -->

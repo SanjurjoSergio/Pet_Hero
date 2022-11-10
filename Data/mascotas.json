@@ -70,5 +70,41 @@
         "raza": "doberman",
         "tamanio": "mediano",
         "observaciones": "muerde"
+    },
+    {
+        "dniDuenio": "10-101010",
+        "id": 9,
+        "nombre": "torre",
+        "familia": "canino",
+        "raza": "pitbull",
+        "tamanio": "mediano",
+        "observaciones": "muerde"
+    },
+    {
+        "dniDuenio": "10-101010",
+        "id": 10,
+        "nombre": "Nana",
+        "familia": "felino",
+        "raza": "maine coon",
+        "tamanio": "grande",
+        "observaciones": "ta peluo"
+    },
+    {
+        "dniDuenio": "10-101010",
+        "id": 11,
+        "nombre": "Nana 2",
+        "familia": "felino",
+        "raza": "maine coon",
+        "tamanio": "grande",
+        "observaciones": "ta pelua la gata"
+    },
+    {
+        "dniDuenio": "10-101010",
+        "id": 12,
+        "nombre": "Michi",
+        "familia": "felino",
+        "raza": "maine coon",
+        "tamanio": "grande",
+        "observaciones": "ara\u00f1a"
     }
 ]
