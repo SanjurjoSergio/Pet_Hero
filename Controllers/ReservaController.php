@@ -26,47 +26,71 @@ class ReservaController
               $reserva->setFechaFinal($fechaFinal);
               $reserva->setEstado('S');   //TODO Solicitada
 
-
               $reservaDao->Add($reserva);
+              /*
+              $alert = [
+                "type" => "confirm",
+                "text" => "Reserva Realizada con Exito"
+              ]*/
 
-              echo "<script> if(confirm('Reserva Realizada con Exito'));";  
-              echo "window.location = '../Views/reserva-list-Duenio.php'; </script>";
+              //echo "<script> if(confirm('Reserva Realizada con Exito'));";
+              // echo "window.location = '../Views/reserva-list-Duenio.php'; </script>";
+
+              //* require_once(dirname(__DIR__) . "\Views\\reserva-list-Duenio.php");
+              $this->List();
             } else {
-              echo "<script> if(confirm('El Guardian Solicitado no se encuentra disponible en esas fechas'));";  //! mensaje de validacion fecha
-              echo "window.location = '../Views/guardian-list.php'; </script>";
+              /*
+              $alert = [
+                "type" => "error",
+                "text" => "El Guardian Solicitado no se encuentra disponible en esas fechas"
+              ]*/
+              //echo "<script> if(confirm('El Guardian Solicitado no se encuentra disponible en esas fechas'));";  //! mensaje de validacion fecha
+              //echo "window.location = '../Views/guardian-list.php'; </script>";
+
+              require_once(dirname(__DIR__) . "\Views\guardian-list.php");
             }
           } else {
-            echo "<script> if(confirm('Error en las fechas, chequee que el inicio sea superior a hoy y que el final sea superior al inicio'));";  //! mensaje de validacion fecha
-            echo "window.location = '../Views/reserva-add.php'; </script>";                                                                       //! cambia por el header
+            /*
+              $alert = [
+                "type" => "error",
+                "text" => "Error en las fechas, chequee que el inicio sea superior a hoy y que el final sea superior al inicio"
+              ]*/
+            // echo "<script> if(confirm('Error en las fechas, chequee que el inicio sea superior a hoy y que el final sea superior al inicio'));";  //! mensaje de validacion fecha
+            //echo "window.location = '../Views/reserva-add.php'; </script>";       
+
+            require_once(dirname(__DIR__) . "\Views\\reserva-add.php");
           }
         } else {
-          header("location: ../Views/reserva-add.php");
-          //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\reserva-add.php');
+          //header("location: ../Views/reserva-add.php");
+          require_once(dirname(__DIR__) . "\Views\\reserva-add.php");
         }
       } else {
-        header("location: ../Views/guardian-home.php");
-        //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\reserva-list.php');
+        //header("location: ../Views/guardian-home.php");   
+        require_once(dirname(__DIR__) . "\Views\login.php");
       }
     else
-      header("location: ../Views/login.php");
-    //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
+      //header("location: ../Views/login.php");
+      require_once(dirname(__DIR__) . "\Views\login.php");
   }
 
 
-  public function SetReserva($cuil)
+  public function SetReserva($guardian)
   {
     if (isset($_SESSION['usuario'])) {
 
       if ($_SESSION['tipo'] == 'D') {
-        $_SESSION['cuilGuardian'] = $cuil;
-        header("location: ../Views/reserva-add.php");
+        $_SESSION['guardian'] = $guardian;
+        //header("location: ../Views/reserva-add.php");
+        $this->Add();
       } else {
         session_destroy();
-        header("location: ../Views/login.php");
+        //header("location: ../Views/login.php");
+        require_once(dirname(__DIR__) . "/Views/login.php");
       }
-    } else
-      //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
-      header("location: ../Views/login.php");
+    } else {
+      //header("location: ../Views/login.php");
+      require_once(dirname(__DIR__) . "/Views/login.php");
+    }
   }
 
 
@@ -76,16 +100,25 @@ class ReservaController
     if (isset($_SESSION['usuario'])) {
       $reservaDao = new ReservaDAO();
       $lista = array();
+      $listaFiltrada = array();
       if ($_SESSION['tipo'] == 'D') {
+        $lista = $reservaDao->getAllByDniDuenio($_SESSION['dni']);
+        foreach ($lista as $reserva) {
+          if ($reserva->getFechaFinal() >= date('Y-m-d') && ($reserva->getEstado() == 'S' || $reserva->getEstado() == 'A' || $reserva->getEstado() == 'P')) {
+            array_push($listaFiltrada, $reserva);
+          }
+        }
         //$lista = $reservaDao->getAllByDniDuenio($_SESSION['dni']);      esta en el views
-        header("location: ../Views/reserva-list-Duenio.php");
+        
+        require_once(dirname(__DIR__) . "/Views/reserva-list-Duenio.php");
       } else {
         //$lista = $reservaDao->getAllByCuilGuardian($_SESSION['cuil']);
-        header("location: ../Views/reserva-list-Guardian.php");
+        //header("location: ../Views/reserva-list-Guardian.php");
+        require_once(dirname(__DIR__) . "/Views/reserva-list-Guardian.php");
       }
     } else
-      //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
-      header("location: ../Views/login.php");
+      //header("location: ../Views/login.php");
+      require_once(dirname(__DIR__) . "/Views/login.php");
   }
 
 
@@ -147,12 +180,13 @@ class ReservaController
     if (isset($_SESSION['usuario']))
       if ($_SESSION['tipo'] == 'D') {
         $reservaDao = new ReservaDAO();
-        $reservaDao->Delete($id);
-        $this->List('El registro fue eliminado');
-      } else {
-        require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\reserva-list.php');
-      }
-    else
-      require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
+        if ($reservaDao->getById($id)->getEstado() != 'P') {
+          $reservaDao->Delete($id);
+          $this->List('El registro fue eliminado');
+        } else {
+          $this->List('No se puede eliminar reservas ya pagadas');
+        }
+      } else
+        require_once((__DIR__) . "\Views\login.php");
   }
 }

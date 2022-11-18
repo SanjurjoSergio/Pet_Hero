@@ -2,51 +2,8 @@
 
 namespace Views;
 
-session_start();
 include_once('header.php');
 include_once('nav-bar.php');
-
-
-require_once("../DAO/ReservaDAO.php");
-require_once("../Model/Reserva.php");
-require_once("../Controllers/ReservaController.php");
-
-use DAO\ReservaDAO as ReservaDAO;
-use Model\Reserva as Reserva;
-
-$unaReserva = new ReservaDAO();
-$reservaList = $unaReserva->getAllByDniDuenio($_SESSION['dni']);
-
-require_once("../DAO/PagoDAO.php");
-require_once("../Model/Pago.php");
-require_once("../Controllers/PagoController.php");
-
-use DAO\PagoDAO as PagoDAO;
-use Model\Pago as Pago;
-
-$unPago = new PagoDAO();
-
-
-require_once("../DAO/MascotaDAO.php");
-require_once("../Model/Mascota.php");
-require_once("../Controllers/MascotaController.php");
-
-use DAO\MascotaDAO as MascotaDAO;
-use Model\Mascota as Mascota;
-
-$unaMascota = new MascotaDAO();
-$mascotaLocal = new Mascota();
-
-
-require_once("../DAO/GuardianDAO.php");
-require_once("../Model/Guardian.php");
-require_once("../Controllers/GuardianController.php");
-
-use DAO\GuardianDAO as GuardianDAO;
-use Model\Guardian as Guardian;
-
-$unGuardian = new GuardianDAO();
-$guardianLocal = new Guardian();
 
 
 
@@ -75,56 +32,41 @@ $guardianLocal = new Guardian();
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($reservaList as $reserva) {
-                            if ($reserva->getFechaFinal() >= date('Y-m-d') && $reserva->getEstado() != 'R') {
-                                $mascotaLocal = $unaMascota->getById($reserva->getIdMascota());
-                                $guardianLocal = $unGuardian->getByCuil($reserva->getCuilGuardian());                               
-                        ?>
-                                <tr>
-                                    <td><?php echo $mascotaLocal->getNombre() ?></td>
-                                    <td><?php echo $guardianLocal->getNombre() ?></td>
-                                    <td><?php echo $reserva->getFechaInicio() ?></td>
-                                    <td><?php echo $reserva->getFechaFinal() ?></td>
-                                    <td><?php echo $reserva->getEstadoDescripcion() ?></td>
+                        foreach ($listaFiltrada as $reserva) { ?>
 
-                                   <td>                                   
-                                   <?php if ($reserva->getEstado() == 'S' || $reserva->getEstado() == 'A') {
-                                            if ($unPago->getById($reserva->getId()) == null) { ?>
-                                            <form action="..\Reserva/Delete" method="post">                                                
-                                                    <input type="hidden" name="id" value="<?php echo $reserva->getId() ?>">
-                                                    <button type="submit" class="btn" value="">X</button>                                                
-                                            </form>
-                                            <?php } else { 
-                                                        echo " -- - -- ";
-                                                ?>
-                                            <?php }
-                                        } else {
-                                                echo " --- ";
-                                                }?>
-                                    </td>
+                            <tr>
+                                <td><?php echo $reserva->getIdMascota() ?></td>
+                                <td><?php echo $reserva->getcuilGuardian() ?></td>
+                                <td><?php echo $reserva->getFechaInicio() ?></td>
+                                <td><?php echo $reserva->getFechaFinal() ?></td>
+                                <td><?php echo $reserva->getEstadoDescripcion() ?></td>
 
-                                    <td>
-                                    <?php 
-                                                $pagoLocal = new Pago();
-                                                $pagoLocal = $unPago->getById($reserva->getId());
-                                                if ($reserva->getEstado() == 'A' && $pagoLocal == null) { ?>
-                                                <form action="..\Pago/SetPago" method="post">                                            
-                                                    <input type="hidden" name="idPago" value="<?php echo $reserva->getId() ?>">
-                                                    <input type="hidden" name="cuilGuardian" value="<?php echo $reserva->getCuilGuardian() ?>">
-                                                    <button type="submit" class="btn" value="">X</button>                                            
-                                                </form>
-                                        <?php } else if ($reserva->getEstado() == 'A' || $reserva->getEstado() == 'P') {
-                                                    if ($pagoLocal) {
-                                                        echo "Pagado";                      
-                                                    }
-                                                } else {
-                                                        echo " ---- ";
-                                                }
-                                            }
+                                <td>
+                                    <form action="..\Reserva/Delete" method="post">
+                                        <input type="hidden" name="id" value="<?php echo $reserva->getId() ?>">
+                                        <button type="submit" class="btn" value="">X</button>
+                                    </form>
+                                </td>
+
+                                <td>
+                                    <?php
+                                    if ($reserva->getEstado() == 'A') { ?>
+                                        <form action="..\Pago/SetPago" method="post">
+                                            <input type="hidden" name="idPago" value="<?php echo $reserva->getId() ?>">
+                                            <input type="hidden" name="cuilGuardian" value="<?php echo $reserva->getCuilGuardian() ?>">
+                                            <button type="submit" class="btn" value="">X</button>
+                                        </form>
+                                <?php } else if ($reserva->getEstado() == 'A' || $reserva->getEstado() == 'P') {
+                                        if (true) {
+                                            echo "Pagado";
                                         }
-                                            ?>
-                                            </td>
-                                            </tr>
+                                    } else {
+                                        echo " ---- ";
+                                    }
+                                }
+                                ?>
+                                </td>
+                            </tr>
                     </tbody>
                 </table>
 

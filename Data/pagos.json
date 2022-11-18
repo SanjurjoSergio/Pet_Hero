@@ -70,5 +70,14 @@
         "estado": 1,
         "formaDePago": "credito",
         "fecha": "2022-11-10"
+    },
+    {
+        "id": "8",
+        "dniDuenio": "11-111111",
+        "cuilGuardian": "44-44444444-4",
+        "monto": "396",
+        "estado": 1,
+        "formaDePago": "debito",
+        "fecha": "2022-11-11"
     }
 ]

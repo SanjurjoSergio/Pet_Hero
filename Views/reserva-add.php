@@ -36,7 +36,7 @@ include_once('nav-bar.php');
                     </table>
                     <div>
                     <input type="hidden" name="dniDuenio" value="<?php echo $_SESSION['dni'] ?>">
-                    <input type="hidden" name="cuilGuardian" value="<?php echo $_SESSION['cuilGuardian'] ?>">
+                    <input type="hidden" name="cuilGuardian" value="<?php echo $_SESSION['guardian']['cuilGuardian'] ?>">
                     <input type="hidden" name="idMascota" value="<?php echo $_SESSION['idMascota'] ?>">
                         <input type="submit" class="btn" value="Agregar" style="background-color:#DC8E47;color:white;" />
                     </div>

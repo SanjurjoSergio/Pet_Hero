@@ -40,8 +40,8 @@ class GuardianController
 
             session_destroy();
             //header("location: ../Views/login.php");
-            echo "<script> if(confirm('Cuenta Registrada, ingrese con sus datos'));";                     
-            echo "window.location = '../Views/login.php'; </script>";          
+            echo "<script> if(confirm('Cuenta Registrada, ingrese con sus datos'));";
+            echo "window.location = '../Views/login.php'; </script>";
           }
         } else {
           header("location: ../Views/guardian-add.php");
@@ -97,26 +97,34 @@ class GuardianController
       //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
       header("location: ../Views/login.php");
   }
-  
 
   public function ListByTamanio($tamanio = '')
   {
     if (isset($_SESSION['usuario'])) {
-      $guardianDao = new GuardianDAO();
-      
+      $guardianDao = new GuardianDAO();      
+
       if ($_SESSION['tipo'] == 'D') {
-        $_SESSION['tamanioMascota'] = $tamanio;
-        $lista = $guardianDao->getByTamanioMascota($tamanio);
-        //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\guardian-list.php');
-        header("location: ../Views/guardian-list.php");
+        $lista = $guardianDao->getByTamanioMascota($tamanio);       
+        require_once(dirname(__DIR__) . "/Views/guardian-list.php");             
+        
       } else {
-        //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
-        header("location: ../Views/guardian-home.php");
+        require_once(dirname(__DIR__) . "\Views\login.php");
+        //header("location: ../Views/guardian-home.php");
       }
-    } else
-      //require_once('C:\xampp\htdocs\Practicos\Pet_Hero\Views\login.php');
-      header("location: ../Views/login.php");
+    } else {
+      require_once(dirname(__DIR__) . "\Views\login.php");
+      //header("location: ../Views/login.php");
+    }
   }
+
+
+
+
+
+
+
+
+  
 
 
 

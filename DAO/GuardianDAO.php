@@ -48,11 +48,11 @@
           //array_push($arrayTamanios, $item->getTamanioMascota());
           $arrayTamanios = $item->getTamanioMascota();
           if (in_array($tamanio, $arrayTamanios)){
-            array_push($arrayGuardianes, $item);
-            return $arrayGuardianes;
+            array_push($arrayGuardianes, $item);          
+            
           }
         }
-        return null;
+        return (count($arrayGuardianes) > 0 ) ? $arrayGuardianes : null;
       }
 
 
